@@ -15,9 +15,9 @@ app.use(cors());
 // API Routers
 app.use('/api/users', usersRouter);
 
-// Heroku Build Path
+// Heroku Post-Build Path
 app.use(express.static(path.join(__dirname, '../client/build')));
-app.get('*', (req, res) => {
+app.get('*', (_req, res) => {
     res.sendFile(path.join(__dirname, '../client/build'));
 })
 
