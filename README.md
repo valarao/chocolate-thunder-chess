@@ -51,12 +51,12 @@ Given <b>time constraints</b>, we can allow players to create their own user acc
 
 ### Prototype 1: Most Common Position Cards
 
-![Protoype 1](./mockups/MainMostCommonPositions.png)
+![Protoype 1](./docs/mockups/MainMostCommonPositions.png)
 
 ### Prototype 2: Output Upon Notation Card Click
 
-![Protoype 2](./mockups/PlayChess.png)
+![Protoype 2](./docs/mockups/PlayChess.png)
 
 ### Prototype 3: Output Upon Notation Search
 
-![Protoype 3](./mockups/SearchExample.png)
+![Protoype 3](./docs/mockups/SearchExample.png)
