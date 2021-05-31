@@ -20,11 +20,11 @@ app.use('/api/users', usersRouter);
 // Heroku Post-Build Path
 app.use(express.static(path.join(__dirname, '../client/build')));
 app.get('*', (_req, res) => {
-    res.sendFile(path.join(__dirname, '../client/build'));
-})
+  res.sendFile(path.join(__dirname, '../client/build'));
+});
 
 // Start Server
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
-    console.log(`Server started on port ${port}`);
+  console.log(`Server started on port ${port}`);
 });
