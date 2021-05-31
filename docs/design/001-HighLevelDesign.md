@@ -51,16 +51,16 @@ Nf2 42. g4 Bd3 43. Re6 1/2-1/2
 
 ## Application Assumptions
 
-We have made a number of assumptions about positions stored, as well as users would interact with our application.
+We have made a number of assumptions about positions stored, as well as users who would interact with our application.
 
 **Positions**
 - **Quantity of Positions**: No more than [1,327 openings](https://en.wikipedia.org/wiki/Chess_opening) will be stored in the database
 - **Length of Moves**: If move counts are kept, the average number of moves per chess game will be [40](https://www.chessgames.com/chessstats.html).
 
 **Users**
-- **Game Understanding**: Users understand how the game is played and [standard algebraic notation (SAN)](https://en.wikipedia.org/wiki/Algebraic_notation_(chess))
+- **Game Understanding**: Users know how to play Chess, with most understanding [standard algebraic notation (SAN)](https://en.wikipedia.org/wiki/Algebraic_notation_(chess))
 - **Common Activity**: Users already play on other sites ([chess.com](https://www.chess.com/), [lichess](https://lichess.org/))
-- **Scalability**: No more than 1,000 users will be interacting with our application at a given time
+- **Scalability**: No more than 1,000 users will be interacting with our application at any given time
 
 ## Development Constraints
 
@@ -69,18 +69,18 @@ We have made a number of assumptions about positions stored, as well as users wo
 
 ## Alternatives Analysis
 
-Given our constraints, we contemplated 3 alternate approaches to figure out what we should support for the MVP.
+Given our constraints, we contemplated 3 alternate approaches to figure out what notation we should support for the MVP.
 
 ### Alternative 1: Only Support FEN Notation
 
 **Pros**
 
 - **Compactness**: FEN files are generally smaller than PGN files representing the same games 
-- **Lower Calculation Required**: Since FEN can represent a position "as is", it requires less position computation to set up a board
+- **Less Computation Required**: Since FEN can represent a position "as is", it requires less computation to set up a board
 
 **Cons**
 
-- **Data Loss**: FEN only keeps information to be represented at a given position, but loses information about past moves and other metadata.
+- **Data Loss**: FEN only keeps information to be represented at a given position, but loses information about past moves and other metadata
 - **Readability**: FEN notation is more difficult for people to visualize boards relative to PGN notation
 
 ### Alternative 2: Only Support PGN Notation
@@ -88,7 +88,7 @@ Given our constraints, we contemplated 3 alternate approaches to figure out what
 **Pros**
 
 - **Ease of Understanding**: PGN allows for representation in official [FIDE](https://en.wikipedia.org/wiki/FIDE) notation, which most chess players are familiar with 
-- **Extensibility**: Allows portability of chess metadata into other platforms, as well as moves made
+- **Extensibility**: Allows portability of chess metadata into other platforms, as well as past moves made
 
 **Cons**
 
@@ -107,9 +107,9 @@ Given our constraints, we contemplated 3 alternate approaches to figure out what
 
 ### Alternatives Evaluation
 
-Based on our **development contraints**, we quickly ruled out supporting both notations (**Alternative 3**). Supporting both would take an extra week or two, and we felt that there were other requirements that we would rather focus on than supporting 2 notations.
+Based on our **development contraints**, we quickly ruled out supporting both notations (**Alternative 3**). Supporting both would take an extra week or two, and we felt that there were other requirements that we would rather focus on compare to supporting 2 notations.
 
-To decide between FEN notation and PGN notation, we thought more about our **application assumptions**. While PGN generally takes more data to store than FEN, we don't see the number of accepted openings (1,327) changing any time soon. We also felt that users may want increased confidence that the position retrieved is the correct one - implying a desire for readability.  
+To decide between FEN notation and PGN notation, we thought more about our **application assumptions**. While PGN generally takes more space to store than FEN, we don't see the number of accepted openings (1,327) changing any time soon. We also felt that users may want increased confidence that the position retrieved is the correct one - implying a desire for readability.  
 
 In the end, we decided against only supporting FEN notation (**Alternative 1**), and instead decided to only support PGN notation (**Alternative 2**).
 
@@ -135,7 +135,7 @@ Stage 2 will be focused on extending the core application with **standard requir
 
 ### Stage 2: Two-Person Trainer (3 weeks)
 
-Once the standard requirements are complete, we expect to focus our efforts on the **stretch requirement** of supporting two-person training.
+Once the standard requirements are complete, we expect to focus our efforts on the **stretch requirements** of supporting two-person training.
 
 - Configuring a TCP connection for two people to play against each other starting at a specific position
 - Link sending functionality for people to connect
