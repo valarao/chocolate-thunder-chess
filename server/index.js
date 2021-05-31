@@ -3,9 +3,11 @@ const cors = require('cors');
 const path = require('path');
 require('dotenv').config();
 
+const { initializeDatabaseConnection } = require('./database/connection');
 const usersRouter = require('./routes/users');
 
 const app = express();
+initializeDatabaseConnection();
 
 // Middleware
 app.use(express.json());

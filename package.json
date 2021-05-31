@@ -10,12 +10,13 @@
   },
   "scripts": {
     "start": "node server/index.js",
+    "first-install": "yarn install && cd client && yarn install && yarn build",
     "heroku-postbuild": "cd client && yarn install && yarn build"
   },
   "contributors": [
     "Alvin Lo <thisisalvinlo@gmail.com> (https://github.com/AlvinCYLo)",
     "Austin Cho <austin.cho14@gmail.com> (https://github.com/austincho)",
     "Joy Xiao <joyxiao9@gmail.com> (https://github.com/joyx9)",
-    "Miguel Valarao <miguel.valarao@email.com> (https://flaviocopes.com)"
+    "Miguel Valarao <miguel.valarao@email.com> (https://github.com/valarao)"
   ]
 }
