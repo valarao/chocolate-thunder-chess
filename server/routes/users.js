@@ -1,4 +1,5 @@
 const express = require('express');
+const logger = require('../util/logger');
 
 const router = express.Router();
 
@@ -9,7 +10,7 @@ router.get('/', async (_req, res) => {
     const data = 'Placeholder GET';
     return res.status(200).json({ message: data });
   } catch (err) {
-    console.log(err);
+    logger.error(err);
     return res.status(500).json(err);
   }
 });
