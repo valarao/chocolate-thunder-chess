@@ -17,6 +17,7 @@ const useStyles = makeStyles({
 
 const Navbar = () => {
   const classes = useStyles();
+
   return (
     <Box className={classes.root}>
       <Typography className={classes.text}>
