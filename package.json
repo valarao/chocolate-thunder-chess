@@ -18,5 +18,13 @@
     "Austin Cho <austin.cho14@gmail.com> (https://github.com/austincho)",
     "Joy Xiao <joyxiao9@gmail.com> (https://github.com/joyx9)",
     "Miguel Valarao <miguel.valarao@email.com> (https://github.com/valarao)"
-  ]
+  ],
+  "devDependencies": {
+    "eslint": "^7.27.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0"
+  }
 }
