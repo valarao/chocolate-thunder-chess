@@ -1,7 +1,7 @@
 # Image Generator
 
 ## Overview
-Script that takes in a folder of `.pgn` files and generates `.png` images.
+This Image Generator script takes in a folder of `.pgn` files and generates `.png` images as well as `.b64` encoding.
 
 This can be used for creating images for mock data on the front end.
 
