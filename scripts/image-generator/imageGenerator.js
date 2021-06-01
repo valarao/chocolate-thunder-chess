@@ -7,8 +7,10 @@ const PGN_FOLDER = './pgn';
 const PNG_FOLDER = './png';
 const BASE64_FOLDER = './base64';
 
-// This is a temporary script to generate Chess images given a folder
-// TODO: Convert image generator script into a backend endpoint
+/**
+ * This is a temporary script to generate Chess images given a folder of PGN files
+ * TODO: Convert image generator script into a backend endpoint
+ */
 const generatePNGImages = async () => {
   try {
     const pgnFilepaths = fs.readdirSync(PGN_FOLDER);
