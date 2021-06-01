@@ -1,5 +1,4 @@
 import React from 'react';
-
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Box';
@@ -8,6 +7,8 @@ import Paper from '@material-ui/core/Paper';
 const useStyles = makeStyles({
   root: {
     textAlign: 'center',
+    width:'50%',
+    transform: 'translate(50%)'
   },
   paper: {
     backgroundColor: 'white',
