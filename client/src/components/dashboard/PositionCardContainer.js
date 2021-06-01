@@ -35,7 +35,7 @@ const PositionCardContainer = () => {
     <Box className={classes.root}>
       <Paper className={classes.paper}>
         {positions.map((position) => (
-          <Box className={classes.cardWrapper} key={position.name} >
+          <Box className={classes.cardWrapper} key={position.name}>
             <PositionCard position={position} />
           </Box>
         ))}
