@@ -16,7 +16,7 @@ const useStyles = makeStyles({
     margin: '0 auto',
     padding: '0 0.5rem',
     width: '50%',
-    minWidth: '500px',
+    minWidth: '450px',
     display: 'grid',
     gridTemplateColumns: '1fr 1fr 1fr',
     marginBottom: '2rem',
