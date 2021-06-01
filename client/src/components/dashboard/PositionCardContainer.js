@@ -30,7 +30,7 @@ const useStyles = makeStyles({
 const PositionCardContainer = () => {
   const classes = useStyles();
   // TODO: Replace mock data with axios call
-  const positions = getMockPositions(); 
+  const positions = getMockPositions();
   return (
     <Box className={classes.root}>
       <Paper className={classes.paper}>
