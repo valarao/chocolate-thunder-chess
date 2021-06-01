@@ -7,7 +7,7 @@ import Paper from '@material-ui/core/Paper';
 import PositionCard from './PositionCard';
 import { getMockPositions } from '../../mock/positions';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
   },
@@ -15,17 +15,22 @@ const useStyles = makeStyles({
     backgroundColor: '#d3d3d3',
     margin: '0 auto',
     padding: '0 0.5rem',
-    width: '50%',
-    minWidth: '450px',
     display: 'grid',
     gridTemplateColumns: '1fr 1fr 1fr',
     marginBottom: '2rem',
+    width: '60%',
+    [theme.breakpoints.between('sm', 'md')]: {
+      width: '75%',
+    },
+    [theme.breakpoints.down('sm')]: {
+      width: '95%',
+    },
   },
   cardWrapper: {
     display: 'inline-block',
     margin: '0.5rem 0.5rem',
   },
-});
+}));
 
 const PositionCardContainer = () => {
   const classes = useStyles();
