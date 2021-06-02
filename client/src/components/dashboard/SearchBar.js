@@ -1,36 +1,42 @@
-import React from 'react';
 import makeStyles from '@material-ui/core/styles/makeStyles';
+import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Box';
-import Paper from '@material-ui/core/Paper';
+import SearchIcon from '@material-ui/icons/Search';
 
 const useStyles = makeStyles({
   root: {
     textAlign: 'center',
-    width:'50%',
-    transform: 'translate(50%)'
+    verticalAlign: 'middle',
+
   },
-  paper: {
+  searchBar: {
     backgroundColor: 'white',
-    margin: '0 10%',
+    margin: '0 0.5%',
     marginBottom: '2rem',
     height: '3rem',
-  },
-  text: {
+    width: '50%',
     textAlign: 'center',
+    fontSize: '1.5rem',
   },
+  searchButton: {
+    height: '2.7rem',
+    marginBottom: '0.5rem'
+  }
 });
 
+// TODO: Add functionality to query and filter for openings. 
 const SearchBar = () => {
   const classes = useStyles();
 
   return (
     <Box className={classes.root}>
-      <Paper className={classes.paper}>
-        <Typography className={classes.text}>
-          Insert Search Bar
-        </Typography>
-      </Paper>
+        <input className={classes.searchBar} type="search"/>
+        <Button
+        variant="contained"
+        color="default"
+        className={classes.searchButton}
+        startIcon={<SearchIcon />}
+        />
     </Box>
   );
 };
