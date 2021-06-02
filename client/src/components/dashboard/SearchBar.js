@@ -2,25 +2,24 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import SearchIcon from '@material-ui/icons/Search';
+import TextField from '@material-ui/core/TextField';
 
 const useStyles = makeStyles({
   root: {
     textAlign: 'center',
     verticalAlign: 'middle',
-
   },
   searchBar: {
     backgroundColor: 'white',
     margin: '0 0.5%',
     marginBottom: '2rem',
-    height: '3rem',
-    width: '50%',
-    textAlign: 'center',
+    width: '30%',
     fontSize: '1.5rem',
+    borderRadius: '5px',
   },
   searchButton: {
-    height: '2.7rem',
-    marginBottom: '0.5rem'
+    height: '3rem',
+    marginTop: '0.2rem'
   }
 });
 
@@ -30,7 +29,7 @@ const SearchBar = () => {
 
   return (
     <Box className={classes.root}>
-        <input className={classes.searchBar} type="search"/>
+      <TextField className={classes.searchBar} id="outlined-basic" variant="outlined"/>
         <Button
         variant="contained"
         color="default"
