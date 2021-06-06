@@ -3,15 +3,22 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const positionSchema = new Schema({
-  name: {
-    type: String,
-    required: true,
+  baseOpening: {
+    name: {
+      type: String,
+      require: true,
+    },
+    baseId: {
+      type: mongoose.Schema.Types.ObjectId,
+    },
   },
   pgn: {
     type: String,
     required: true,
   },
-  baseOpening: mongoose.Schema.Types.ObjectId,
+  variant: {
+    type: String,
+  },
   previewImage: { data: Buffer, contentType: String },
 });
 
