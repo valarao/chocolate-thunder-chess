@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import Box from '@material-ui/core/Box';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+import FileCopyIcon from '@material-ui/icons/FileCopy';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
-import Typography from '@material-ui/core/Typography';
-import { Button, TextField } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField'; 
+import Tooltip from '@material-ui/core/Tooltip';
 
 const useStyles = makeStyles(theme => ({
     dialog: {
@@ -32,14 +34,38 @@ const useStyles = makeStyles(theme => ({
         margin: 0,
     },
     notationCopy: {
+        textAlign: 'right',
         marginTop: '1.5rem',
-        marginBottom: '1rem',
+        height: '70px',
+    },
+    copyButton: {
+        position: 'relative',
+        right: theme.spacing(0.5),
+        bottom: theme.spacing(6.5),
+    },
+    buttons: {
+        width: '6rem',
+        float: 'middle',
+        marginLeft: 15,
+        marginRight: 15,
     },
 }));
 
 const NotationDisplay = (props) => {
     const classes = useStyles();
     const { open, handleClose, name, imageLink } = props.data;
+    const notation = 'insert notation info here';
+
+    const [tooltipClicked, setTooltipClicked] = useState('Copy Text');
+
+    const closeTooltip = () => {
+        setTooltipClicked('Copy Text');
+    }
+
+    const clickTooltip = () => {
+        setTooltipClicked('Copied!')
+        navigator.clipboard.writeText(notation);
+    }
 
     return (
         <Box className={classes.root}>
@@ -52,22 +78,35 @@ const NotationDisplay = (props) => {
                     </IconButton>
                 </DialogTitle>
                 <DialogContent dividers>
-                    <Typography gutterBottom>
-                        <img className={classes.image} src={imageLink} alt={name} />
-                    </Typography>
-                    <Typography gutterBottom>
+                    <img className={classes.image} src={imageLink} alt={name} />
+                    <Box className={classes.notationCopy}>
                         <TextField 
-                            className={classes.notationCopy} 
-                            label="Notation Info"
-                            id="outlined-basic" 
-                            variant="outlined" 
-                            defaultValue="insert notation info here"
-                            fullWidth />
-                    </Typography>
-                    <Typography gutterBottom className={classes.buttons}>
-                        <Button>Play</Button>
-                        <Button onClick={handleClose}>Cancel</Button>
-                    </Typography>
+                            label='Notation Info'
+                            id='outlined-read-only-input'
+                            variant='outlined' 
+                            defaultValue={notation} 
+                            fullWidth 
+                            InputProps={{
+                                readOnly: true,
+                            }}
+                        />
+                        <Tooltip 
+                            className={classes.tooltip} 
+                            onClose={closeTooltip} 
+                            title={tooltipClicked} 
+                            placement='top' 
+                            arrow 
+                            interactive
+                        >
+                            <IconButton className={classes.copyButton} onClick={clickTooltip}>
+                                <FileCopyIcon />
+                            </IconButton>
+                        </Tooltip>
+                    </Box>
+                    <Box>
+                        <Button className={classes.buttons} variant='outlined'>Play</Button>
+                        <Button className={classes.buttons} variant='outlined' onClick={handleClose}>Cancel</Button>
+                    </Box>    
                 </DialogContent>
             </Dialog>
         </Box>
