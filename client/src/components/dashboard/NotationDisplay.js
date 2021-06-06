@@ -18,18 +18,15 @@ const useStyles = makeStyles(theme => ({
         verticalAlign: 'middle',
         maxWidth: '100%',
     },
-
     closeButton: {
         position: 'absolute',
         right: theme.spacing(1),
         top: theme.spacing(1),
         color: theme.palette.grey[500],
     },
-
     title: {
         textAlign: 'center',
     },
-    
     name: {
         margin: 0,
     },
@@ -55,7 +52,6 @@ const NotationDisplay = (props) => {
     const classes = useStyles();
     const { open, handleClose, name, imageLink } = props.data;
     const notation = 'insert notation info here';
-
     const [tooltipClicked, setTooltipClicked] = useState('Copy Text');
 
     const closeTooltip = () => {
