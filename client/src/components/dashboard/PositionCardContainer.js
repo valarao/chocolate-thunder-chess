@@ -6,7 +6,6 @@ import Paper from '@material-ui/core/Paper';
 
 import PositionCard from './PositionCard';
 import { getMockPositions } from '../../mock/positions';
-import NotationDisplay from './NotationDisplay';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -39,7 +38,6 @@ const PositionCardContainer = () => {
   const positions = getMockPositions();
   return (
     <Box className={classes.root}>
-      <NotationDisplay />
       <Paper className={classes.paper}>
         {positions.map((position) => (
           <Box className={classes.cardWrapper} key={position.name}>
