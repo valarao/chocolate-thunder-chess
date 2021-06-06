@@ -1,10 +1,10 @@
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
+import IconButton from '@material-ui/core/IconButton'
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   root: {
     textAlign: 'center',
     verticalAlign: 'middle',
@@ -16,12 +16,26 @@ const useStyles = makeStyles({
     width: '30%',
     fontSize: '1.5rem',
     borderRadius: '5px',
+    [theme.breakpoints.down('md')]: {
+      width: '40%',
+      height: '2rem'
+    }
   },
   searchButton: {
+    justifyContent: 'center',
     height: '3rem',
-    marginTop: '0.2rem'
+    width: '3rem',
+    marginTop: '0.25rem',
+    backgroundColor: '#E0E0E0',
+    borderColor: '#E0E0E0',
+    borderRadius: '5px',
+    [theme.breakpoints.down('md')]: {
+      width: '2rem',
+      height: '2rem',
+      marginTop: '0rem'
+    }
   }
-});
+}));
 
 // TODO: Add functionality to query and filter for openings. 
 const SearchBar = () => {
@@ -30,12 +44,9 @@ const SearchBar = () => {
   return (
     <Box className={classes.root}>
       <TextField className={classes.searchBar} id="outlined-basic" variant="outlined"/>
-        <Button
-        variant="contained"
-        color="default"
-        className={classes.searchButton}
-        startIcon={<SearchIcon />}
-        />
+      <IconButton class={classes.searchButton} aria-label="search for openings" size='medium'>
+          <SearchIcon />
+      </IconButton>
     </Box>
   );
 };
