@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
+import NotationDisplay from './NotationDisplay';
+import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -31,12 +33,25 @@ const PositionCard = (props) => {
   const classes = useStyles();
   const { position } = props;
   const { name, imageLink } = position;
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+      setOpen(true);
+  }
+
+  const handleClose = () => {
+      setOpen(false);
+  }
+
   return (
     <Paper className={classes.root}>
-      <img className={classes.image} src={imageLink} alt={name} />
-      <Typography className={classes.title}>
-        {name}
-      </Typography>
+      <NotationDisplay data={{ open, handleClose, name, imageLink }} />
+      <Box onClick={handleClickOpen}>
+        <img className={classes.image} src={imageLink} alt={name} />
+        <Typography className={classes.title}>
+          {name}
+        </Typography>
+      </Box>
     </Paper>
   );
 };
