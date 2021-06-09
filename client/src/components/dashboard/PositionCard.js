@@ -4,6 +4,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import NotationDisplay from './NotationDisplay';
+import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -45,10 +46,12 @@ const PositionCard = (props) => {
   return (
     <Paper className={classes.root}>
       <NotationDisplay data={{ open, handleClose, name, imageLink }} />
-      <img className={classes.image} src={imageLink} alt={name} onClick={handleClickOpen}/>
-      <Typography className={classes.title}>
-        {name}
-      </Typography>
+      <Box onClick={handleClickOpen}>
+        <img className={classes.image} src={imageLink} alt={name} />
+        <Typography className={classes.title}>
+          {name}
+        </Typography>
+      </Box>
     </Paper>
   );
 };

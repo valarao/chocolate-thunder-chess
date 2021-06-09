@@ -29,6 +29,12 @@ const useStyles = makeStyles(theme => ({
     },
     name: {
         margin: 0,
+        [theme.breakpoints.down('sm')]: {
+            fontSize: '28px',
+        },
+    },
+    image: {
+        width: '80%',
     },
     notationCopy: {
         textAlign: 'right',
