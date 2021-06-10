@@ -8,7 +8,7 @@ import Tabs from "@material-ui/core/Tabs";
 const useStyles = makeStyles({
   root: {
     backgroundColor: "white",
-    padding: "2rem",
+    padding: "1rem ",
     marginBottom: "2rem",
   },
   text: {
@@ -32,7 +32,8 @@ const Navbar = () => {
         onChange={handleChange}
         indicatorColor="primary"
         textColor="primary"
-        centered
+        scrollButtons="auto"
+        variant="fullWidth"
       >
         <Tab value="Home" label="Home" />
         <Tab value="About" label="About" />
