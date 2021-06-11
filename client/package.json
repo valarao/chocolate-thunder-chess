@@ -1,8 +1,10 @@
 {
-  "name": "frontend",
+  "name": "chocolate-thunder-chess",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -39,7 +41,7 @@
     "Alvin Lo <thisisalvinlo@gmail.com> (https://github.com/AlvinCYLo)",
     "Austin Cho <austin.cho14@gmail.com> (https://github.com/austincho)",
     "Joy Xiao <joyxiao9@gmail.com> (https://github.com/joyx9)",
-    "Miguel Valarao <miguel.valarao@email.com> (https://flaviocopes.com)"
+    "Miguel Valarao <miguel.valarao@email.com> (https://github.com/valarao)"
   ],
   "proxy": "http://localhost:5000"
 }
