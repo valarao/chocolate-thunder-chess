@@ -1,4 +1,4 @@
-name: CI Testing on PR
+name: CI Server Testing on PR
 on: pull_request
 jobs:
   test_pull_request:

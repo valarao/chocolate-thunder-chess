@@ -1,4 +1,4 @@
-name: CI Testing on Merge to Main
+name: CI Server Testing on Merge to Main
 'on':
   push:
     branches:
