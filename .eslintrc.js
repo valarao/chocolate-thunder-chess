@@ -26,7 +26,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['server/tests/*.spec.js'],
+      files: ['server/tests/**.spec.js'],
       rules: {
         'linebreak-style': 'off',
         'func-names': 'off',
