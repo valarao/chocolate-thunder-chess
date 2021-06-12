@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 const logger = require('../util/logger');
 
-exports.initializeDatabaseConnection = () => {
-  const connection = process.env.MONGODB_CONNECTION;
+exports.initializeDatabaseConnection = (connection) => {
   mongoose.connect(connection, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
