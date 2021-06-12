@@ -19,6 +19,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: yarn install
-      - run: yarn test
+      - run: yarn test --frozen-lockfile
         env:
           MONGODB_CONNECTION: '${{ secrets.MONGODB_CONNECTION }}'
