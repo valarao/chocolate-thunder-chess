@@ -17,14 +17,12 @@ const useStyles = makeStyles({
 const App = () => {
   const classes = useStyles();
   return (
-    <div classname='App'>
-      <Provider store={store}>
-        <Box className={classes.root}>
-          <Navbar />
-          <DashboardPage />
-        </Box>
-      </Provider>
-    </div>
+    <Provider store={store}>
+      <Box className={classes.root}>
+        <Navbar />
+        <DashboardPage />
+      </Box>
+    </Provider>
   );
 };
 
