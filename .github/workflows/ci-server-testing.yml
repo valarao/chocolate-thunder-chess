@@ -1,4 +1,4 @@
-name: CI Server Testing
+name: CI Server Testing and Client Build
 
 on:
   push:
@@ -8,7 +8,7 @@ on:
 
 jobs:
   run_tests:
-    name: Run Server Side Tests
+    name: Run Tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -17,6 +17,6 @@ jobs:
           node-version: 14.x
       - run: yarn install --frozen-lockfile
       - run: yarn test
-      - run: cd client && yarn install && yarn build
         env:
           MONGODB_CONNECTION: '${{ secrets.MONGODB_CONNECTION }}'
+      - run: cd client && yarn install && yarn build
