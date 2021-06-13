@@ -1,9 +1,10 @@
 import { GET_NOTATION_POSITION } from '../types';
 
 const initialState = {
-  notation: null,
+  notation: 'placeholder',
 };
 
+//TODO: new business logic requirements will be inside the switch
 const notationReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_NOTATION_POSITION:
