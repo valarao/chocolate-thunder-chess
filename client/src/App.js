@@ -1,4 +1,6 @@
 import React from 'react';
+import store from './redux/store';
+import { Provider } from 'react-redux';
 
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import Box from '@material-ui/core/Box';
@@ -15,11 +17,13 @@ const useStyles = makeStyles({
 const App = () => {
   const classes = useStyles();
   return (
-    <Box className={classes.root}>
-      <Navbar />
-      <DashboardPage />
-    </Box>
+    <Provider store={store}>
+      <Box className={classes.root}>
+        <Navbar />
+        <DashboardPage />
+      </Box>
+    </Provider>
   );
-}
+};
 
 export default App;

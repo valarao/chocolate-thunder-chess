@@ -43,8 +43,8 @@ const SearchBar = () => {
 
   return (
     <Box className={classes.root}>
-      <TextField className={classes.searchBar} id="outlined-basic" variant="outlined"/>
-      <IconButton class={classes.searchButton} aria-label="search for openings" size='medium'>
+      <TextField className={classes.searchBar} id='outlined-basic' variant='outlined'/>
+      <IconButton class={classes.searchButton} aria-label='search for openings' size='medium'>
           <SearchIcon />
       </IconButton>
     </Box>
