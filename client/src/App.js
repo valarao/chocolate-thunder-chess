@@ -24,7 +24,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <Box className={classes.root}>
-        BrowserRouter>
+        <BrowserRouter>
           <Route path='/' render={(history) => (
             <Navbar location={history.location.pathname}/>
           )} />
@@ -36,7 +36,6 @@ const App = () => {
             <Route path="/custom" component={CustomNotationPage} />
           </Switch>
         </BrowserRouter>
-        <DashboardPage />
       </Box>
     </Provider>
   );
