@@ -4,6 +4,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 import Box from '@material-ui/core/Box';
 import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
   root: {
@@ -17,28 +18,25 @@ const useStyles = makeStyles({
 });
 
 // TODO: Add functionality for page changes when react-router is implemented
-const Navbar = () => {
+const Navbar = (props) => {
   const classes = useStyles();
-  const [value, setValue] = React.useState('Home');
+  const path = props.location;
 
-  const handleChange = (event, value) => {
-    setValue(value);
-  };
+  const routes = ['/', '/about', '/info', '/custom']
 
   return (
     <Box className={classes.root}>
       <Tabs
-        value={value}
-        onChange={handleChange}
+        value={path}
         indicatorColor='primary'
         textColor='primary'
         scrollButtons='auto'
         variant='fullWidth'
       >
-        <Tab value='Home' label='Home' />
-        <Tab value='About' label='About' />
-        <Tab value='Info' label='Opening Info' />
-        <Tab value='Custom Notations' label='Custom Notations' />
+        <Tab value={routes[0]} label='Home' component={Link} to={routes[0]} />
+        <Tab value={routes[1]} label='About' component={Link} to={routes[1]}  />
+        <Tab value={routes[2]} label='Opening Info' component={Link} to={routes[2]} />
+        <Tab value={routes[3]} label='Custom Notations' component={Link} to={routes[3]}  />
       </Tabs>
     </Box>
   );
