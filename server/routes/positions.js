@@ -5,11 +5,14 @@ const logger = require('../util/logger');
 const router = express.Router();
 const Position = require('../models/Position');
 
-router.get('/search', async (_req, res) => {
+router.get('/search', async (req, res) => {
   try {
-    const searchFilter = _req.query.filter.replace(/[^a-z\s-']/gi, '');
-    const regexSearchFilter = new RegExp(searchFilter);
-    const regexPositionFilter = { $regex: regexSearchFilter, $options: 'i' };
+    const MAX_SEARCH_RESULTS = 90;
+    // Matches any characters that are not letters, a space, - or '
+    const nonLettersRegex = new RegExp(/[^a-z\s-']/gi);
+    const cleanedFilter = req.query.filter.trim().replace(nonLettersRegex, '');
+    const filterRegex = new RegExp(cleanedFilter);
+    const regexPositionFilter = { $regex: filterRegex, $options: 'i' };
     Position.find(
       {
         $or: [
@@ -17,7 +20,7 @@ router.get('/search', async (_req, res) => {
           { 'baseOpening.name': regexPositionFilter },
         ],
       },
-    ).limit(90).then((query) => {
+    ).limit(MAX_SEARCH_RESULTS).then((query) => {
       // TODO: Perform actions for Redux
       return res.status(200).json({ data: query });
     });
@@ -58,7 +61,7 @@ router.get('/common-positions', async (_req, res) => {
         },
       }).then((findQuery) => {
         // TODO: Perform actions for redux
-        res.status(200).json({ data: findQuery });
+        return res.status(200).json({ data: findQuery });
       });
     });
   } catch (err) {
