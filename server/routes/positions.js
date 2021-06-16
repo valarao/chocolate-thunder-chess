@@ -9,7 +9,12 @@ const Position = require('../models/Position');
       const searchFilter = _req.query.filter.replace(/[^a-z\s-']/gi, '')
       const regexSearchFilter = new RegExp(searchFilter);
       const regexPositionFilter = { $regex: regexSearchFilter, $options: 'i' };
-      Position.find({ $or : [{ variant : regexPositionFilter}, { "baseOpening.name": regexPositionFilter }] }).limit(90).then( (query) => {
+      Position.find(
+        { $or : [
+            { variant : regexPositionFilter }, 
+            { "baseOpening.name": regexPositionFilter }
+            ] 
+        }).limit(90).then( (query) => {
         // TODO: Perform actions for Redux
         return res.status(200).json({ message: 'Done' });
       });
