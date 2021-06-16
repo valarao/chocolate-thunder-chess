@@ -6,9 +6,10 @@ require('dotenv').config();
 const { initializeDatabaseConnection } = require('./database/connection');
 const usersRouter = require('./routes/users');
 const logger = require('./util/logger');
+const baseRoutes = require('./constants/base-routes');
 
 const app = express();
-initializeDatabaseConnection();
+initializeDatabaseConnection(process.env.MONGODB_CONNECTION);
 
 // Middleware
 app.use(express.json());
@@ -16,7 +17,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
 // API Routers
-app.use('/api/users', usersRouter);
+app.use(baseRoutes.users, usersRouter);
 
 // Heroku Post-Build Path
 app.use(express.static(path.join(__dirname, '../client/build')));
@@ -29,3 +30,5 @@ const port = process.env.PORT || 5000;
 app.listen(port, () => {
   logger.info(`Server started on port ${port}`);
 });
+
+module.exports = app;
