@@ -10,10 +10,11 @@ const Position = require('../models/Position');
       const regexSearchFilter = new RegExp(searchFilter);
       const regexPositionFilter = { $regex: regexSearchFilter, $options: 'i' };
       Position.find(
-        { $or : [
+        { $or : 
+          [
             { variant : regexPositionFilter }, 
             { "baseOpening.name": regexPositionFilter }
-            ] 
+          ] 
         }).limit(90).then( (query) => {
         // TODO: Perform actions for Redux
         return res.status(200).json({ message: 'Done' });
