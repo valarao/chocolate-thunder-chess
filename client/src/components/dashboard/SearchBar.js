@@ -30,6 +30,7 @@ const useStyles = makeStyles(theme => ({
     marginTop: '0.25rem',
     backgroundColor: theme.palette.primary.main,
     borderRadius: '5px',
+    cursor: 'pointer',
   }
 }));
 
@@ -39,9 +40,9 @@ const SearchBar = () => {
 
   return (
     <Box className={classes.root}>
-      <TextField className={classes.searchBar} id='outlined-basic' variant='outlined'/>
+      <TextField className={classes.searchBar} id='outlined-basic' variant='outlined' />
       <IconButton className={classes.searchButton} aria-label='search for openings' size='medium'>
-          <SearchIcon />
+        <SearchIcon />
       </IconButton>
     </Box>
   );
