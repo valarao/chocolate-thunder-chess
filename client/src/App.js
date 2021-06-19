@@ -13,6 +13,7 @@ import AboutPage from './pages/AboutPage';
 import NotationInfoPage from './pages/NotationInfoPage';
 import CustomNotationPage from './pages/CustomNotationPage';
 import theme from './util/theme';
+import GamePage from './pages/GamePage';
 
 const useStyles = makeStyles({
   root: {
@@ -35,6 +36,7 @@ const App = () => {
             <Switch>
               <Route exact path="/" component={DashboardPage} />
               <Route path="/about" component={AboutPage} />
+              <Route path="/game" component={GamePage} />
               <Route path="/info" component={NotationInfoPage} />
               <Route path="/custom" component={CustomNotationPage} />
             </Switch>

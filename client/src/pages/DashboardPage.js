@@ -12,6 +12,7 @@ import { getCommonPositions } from '../redux/actions/positionActions';
 const useStyles = makeStyles(theme => ({
   root: {
     textAlign: 'center',
+    marginTop: '2rem',
   },
   text: {
     color: theme.palette.text.primary,
