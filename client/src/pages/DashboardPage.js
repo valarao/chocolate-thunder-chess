@@ -6,6 +6,9 @@ import Box from '@material-ui/core/Box';
 import SearchBar from '../components/dashboard/SearchBar';
 import PositionCardContainer from '../components/dashboard/PositionCardContainer';
 
+import { useDispatch, useSelector } from 'react-redux';
+import { getCommonPositions } from '../redux/actions/positionActions';
+
 const useStyles = makeStyles({
   root: {
     textAlign: 'center',
@@ -17,10 +20,19 @@ const useStyles = makeStyles({
 
 const DashboardPage = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+  const commonPositions = useSelector(state => state.positions.commonPositions);
+
+  if (commonPositions === null) {
+    dispatch(getCommonPositions());
+  }
+
   return (
     <Box className={classes.root}>
       <SearchBar />
-      <PositionCardContainer />
+      {commonPositions && <PositionCardContainer
+        positions={commonPositions}
+      />}
     </Box>
   );
 };
