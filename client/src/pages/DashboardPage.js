@@ -9,14 +9,15 @@ import PositionCardContainer from '../components/dashboard/PositionCardContainer
 import { useDispatch, useSelector } from 'react-redux';
 import { getCommonPositions } from '../redux/actions/positionActions';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   root: {
     textAlign: 'center',
   },
   text: {
+    color: theme.palette.text.primary,
     textAlign: 'center',
   },
-});
+}));
 
 const DashboardPage = () => {
   const classes = useStyles();

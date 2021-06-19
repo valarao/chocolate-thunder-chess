@@ -14,6 +14,10 @@ const theme = createMuiTheme({
     surface: {
       default: '#373e47',
     },
+    text: {
+      primary: '#cdd9e5',
+      secondary: '#adbac7',
+    },
     type: 'dark',
   },
 });

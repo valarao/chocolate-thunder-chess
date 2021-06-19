@@ -6,7 +6,7 @@ import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import { Link } from 'react-router-dom';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   root: {
     padding: '1rem',
     marginBottom: '2rem',
@@ -14,7 +14,7 @@ const useStyles = makeStyles({
   text: {
     textAlign: 'center',
   },
-});
+}));
 
 // TODO: Add functionality for page changes when react-router is implemented
 const Navbar = (props) => {

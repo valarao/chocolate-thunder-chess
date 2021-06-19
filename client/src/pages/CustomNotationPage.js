@@ -4,16 +4,16 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   root: {
     textAlign: 'center',
   },
   text: {
+    color: theme.palette.text.primary,
     textAlign: 'center',
-    color: 'white',
     margin: '1rem 0.5rem',
   },
-});
+}));
 
 const CustomNotationPage = () => {
   const classes = useStyles();
