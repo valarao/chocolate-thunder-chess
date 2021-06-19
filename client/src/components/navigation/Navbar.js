@@ -6,16 +6,15 @@ import Tab from '@material-ui/core/Tab';
 import Tabs from '@material-ui/core/Tabs';
 import { Link } from 'react-router-dom';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   root: {
-    backgroundColor: 'white',
     padding: '1rem',
     marginBottom: '2rem',
   },
   text: {
     textAlign: 'center',
   },
-});
+}));
 
 // TODO: Add functionality for page changes when react-router is implemented
 const Navbar = (props) => {
@@ -34,9 +33,9 @@ const Navbar = (props) => {
         variant='fullWidth'
       >
         <Tab value={routes[0]} label='Home' component={Link} to={routes[0]} />
-        <Tab value={routes[1]} label='About' component={Link} to={routes[1]}  />
+        <Tab value={routes[1]} label='About' component={Link} to={routes[1]} />
         <Tab value={routes[2]} label='Opening Info' component={Link} to={routes[2]} />
-        <Tab value={routes[3]} label='Custom Notations' component={Link} to={routes[3]}  />
+        <Tab value={routes[3]} label='Custom Notations' component={Link} to={routes[3]} />
       </Tabs>
     </Box>
   );

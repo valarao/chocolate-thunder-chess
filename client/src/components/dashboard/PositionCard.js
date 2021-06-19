@@ -12,6 +12,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     height: '100%',
     cursor: 'pointer',
+    backgroundColor: theme.palette.surface.default,
   },
   image: {
     width: '85%',
