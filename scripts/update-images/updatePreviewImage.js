@@ -28,6 +28,7 @@ const savePNGBuffer = async (collection) => {
 };
 
 function downloadPNGImages(query) {
+  // Make sure to create a png directory in the update-images directory
   const PNG_FOLDER = './png';
 
   query.forEach((q) => {
