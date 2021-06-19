@@ -5,7 +5,6 @@ import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
 
 import PositionCard from './PositionCard';
-import { getMockPositions } from '../../mock/positions';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -33,16 +32,14 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const PositionCardContainer = (props) => {
-  // TODO: Use positions props once buffer is resolved
-  // const { positions } = props;
+  const { positions } = props;
   const classes = useStyles();
 
-  const positions = getMockPositions();
   return (
     <Box className={classes.root}>
       <Paper className={classes.paper}>
         {positions.map((position) => (
-          <Box className={classes.cardWrapper} key={position.name}>
+          <Box className={classes.cardWrapper} key={position._id}>
             <PositionCard position={position} />
           </Box>
         ))}
