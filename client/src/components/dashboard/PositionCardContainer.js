@@ -32,9 +32,11 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const PositionCardContainer = () => {
+const PositionCardContainer = (props) => {
+  // TODO: Use positions props once buffer is resolved
+  // const { positions } = props;
   const classes = useStyles();
-  // TODO: Replace mock data with axios call
+
   const positions = getMockPositions();
   return (
     <Box className={classes.root}>
