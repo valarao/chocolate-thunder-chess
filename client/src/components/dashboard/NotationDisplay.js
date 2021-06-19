@@ -19,11 +19,13 @@ const useStyles = makeStyles(theme => ({
     verticalAlign: 'middle',
     maxWidth: '100%',
   },
+  root: {
+    backgroundColor: theme.palette.background.default,
+  },
   closeButton: {
     position: 'absolute',
     right: theme.spacing(1),
     top: theme.spacing(1),
-    color: theme.palette.grey[500],
   },
   title: {
     textAlign: 'center',
@@ -72,46 +74,49 @@ const NotationDisplay = (props) => {
 
   return (
     <Dialog className={classes.dialog} onClose={handleClose} open={open}>
-      <DialogTitle className={classes.title}>
-        You Chose To Play
-        <Typography className={classes.name}>
-          {name}
-        </Typography>
-        <IconButton className={classes.closeButton} onClick={handleClose}>
-          <CloseIcon />
-        </IconButton>
-      </DialogTitle>
-      <DialogContent dividers>
-        <img className={classes.image} src={imageSrc} alt={name} />
-        <Box className={classes.notationCopy}>
-          <TextField
-            label='PGN Notation'
-            id='outlined-read-only-input'
-            variant='outlined'
-            defaultValue={notation}
-            fullWidth
-            InputProps={{
-              readOnly: true,
-            }}
-          />
-          <Tooltip
-            className={classes.tooltip}
-            onClose={closeTooltip}
-            title={tooltipClicked}
-            placement='top'
-            arrow
-            interactive
-          >
-            <IconButton className={classes.copyButton} onClick={clickTooltip}>
-              <FileCopyIcon />
-            </IconButton>
-          </Tooltip>
-        </Box>
-        <Box>
-          <Button className={classes.buttons} variant='outlined'>Play</Button>
-          <Button className={classes.buttons} variant='outlined' onClick={handleClose}>Cancel</Button>
-        </Box>
-      </DialogContent>
+      <Box className={classes.root}>
+        <DialogTitle className={classes.title}>
+          You Chose To Play
+          <Typography className={classes.name}>
+            {name}
+          </Typography>
+          <IconButton className={classes.closeButton} onClick={handleClose}>
+            <CloseIcon />
+          </IconButton>
+        </DialogTitle>
+        <DialogContent dividers>
+          <img className={classes.image} src={imageSrc} alt={name} />
+          <Box className={classes.notationCopy}>
+            <TextField
+              label='PGN Notation'
+              id='outlined-read-only-input'
+              variant='outlined'
+              defaultValue={notation}
+              fullWidth
+              color='primary'
+              InputProps={{
+                readOnly: true,
+              }}
+            />
+            <Tooltip
+              className={classes.tooltip}
+              onClose={closeTooltip}
+              title={tooltipClicked}
+              placement='top'
+              arrow
+              interactive
+            >
+              <IconButton className={classes.copyButton} onClick={clickTooltip}>
+                <FileCopyIcon />
+              </IconButton>
+            </Tooltip>
+          </Box>
+          <Box>
+            <Button className={classes.buttons} variant='outlined'>Play</Button>
+            <Button className={classes.buttons} variant='outlined' onClick={handleClose}>Cancel</Button>
+          </Box>
+        </DialogContent>
+      </Box>
     </Dialog>
   )
 }

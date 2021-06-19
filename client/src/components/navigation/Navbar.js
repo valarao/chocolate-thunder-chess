@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
   root: {
-    backgroundColor: 'white',
     padding: '1rem',
     marginBottom: '2rem',
   },
@@ -34,9 +33,9 @@ const Navbar = (props) => {
         variant='fullWidth'
       >
         <Tab value={routes[0]} label='Home' component={Link} to={routes[0]} />
-        <Tab value={routes[1]} label='About' component={Link} to={routes[1]}  />
+        <Tab value={routes[1]} label='About' component={Link} to={routes[1]} />
         <Tab value={routes[2]} label='Opening Info' component={Link} to={routes[2]} />
-        <Tab value={routes[3]} label='Custom Notations' component={Link} to={routes[3]}  />
+        <Tab value={routes[3]} label='Custom Notations' component={Link} to={routes[3]} />
       </Tabs>
     </Box>
   );

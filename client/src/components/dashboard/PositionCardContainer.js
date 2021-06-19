@@ -11,13 +11,14 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
   },
   paper: {
-    backgroundColor: '#d3d3d3',
+    backgroundColor: theme.palette.background.default,
     margin: '0 auto',
     padding: '0 0.5rem',
     display: 'grid',
     gridTemplateColumns: '1fr 1fr 1fr',
     marginBottom: '2rem',
     width: '60%',
+    maxWidth: '1000px',
     [theme.breakpoints.between('sm', 'md')]: {
       width: '75%',
     },
