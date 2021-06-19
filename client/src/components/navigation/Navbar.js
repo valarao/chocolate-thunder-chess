@@ -64,7 +64,7 @@ const Navbar = (props) => {
       <Grid container className={classes.content}>
         <Grid item xs={9} className={classes.leftGrid}>
           <NavDrawer />
-          <Typography className={classes.title} component={Link} to={NAVBAR_ROUTES[0]}>
+          <Typography className={classes.title} component={Link} to='/'>
             OPENING TRAINER
           </Typography>
           <Box className={classes.links}>
