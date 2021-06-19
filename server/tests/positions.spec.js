@@ -15,7 +15,7 @@ describe('Positions', function () {
         .get(`${baseRoutes.positions}/search?filter=Polish`)
         .end((_err, res) => {
           res.should.have.status(200);
-          res.body.should.have.property('data').and.to.be.an('array');
+          res.body.should.have.property('positions').and.to.be.an('array');
           done();
         });
     });
@@ -27,7 +27,7 @@ describe('Positions', function () {
         .get(`${baseRoutes.positions}/common-positions`)
         .end((_err, res) => {
           res.should.have.status(200);
-          res.body.should.have.property('data').and.to.be.an('array').and.to.have.property('length', 9);
+          res.body.should.have.property('positions').and.to.be.an('array').and.to.have.property('length', 9);
           done();
         });
     });
