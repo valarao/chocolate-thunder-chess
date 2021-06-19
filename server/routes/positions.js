@@ -13,26 +13,23 @@ router.get('/search', async (req, res) => {
     const cleanedFilter = req.query.filter.trim().replace(nonLettersRegex, '');
     const filterRegex = new RegExp(cleanedFilter);
     const regexPositionFilter = { $regex: filterRegex, $options: 'i' };
-    Position.find(
+    return Position.find(
       {
         $or: [
           { variant: regexPositionFilter },
           { 'baseOpening.name': regexPositionFilter },
         ],
       },
-    ).limit(MAX_SEARCH_RESULTS).then((query) => {
-      // TODO: Perform actions for Redux
-      return res.status(200).json({ data: query });
-    });
+    ).limit(MAX_SEARCH_RESULTS).then((query) => res.status(200).json({ positions: query }));
   } catch (err) {
     logger.error(err);
     return res.status(500).json(err);
   }
 });
 
-router.get('/common-positions', async (_req, res) => {
+router.get('/common', async (_req, res) => {
   try {
-    Position.aggregate(
+    return Position.aggregate(
       [
         {
           $match: {
@@ -53,16 +50,14 @@ router.get('/common-positions', async (_req, res) => {
         },
       ],
     ).limit(9).then((aggQuery) => {
+      // eslint-disable-next-line no-underscore-dangle
       const listOfIds = aggQuery.map((item) => mongoose.Types.ObjectId(item._id));
 
       Position.find({
         _id: {
           $in: listOfIds,
         },
-      }).then((findQuery) => {
-        // TODO: Perform actions for redux
-        return res.status(200).json({ data: findQuery });
-      });
+      }).then((findQuery) => res.status(200).json({ positions: findQuery }));
     });
   } catch (err) {
     logger.error(err);

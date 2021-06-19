@@ -3,13 +3,16 @@ import React, { useState } from 'react';
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
-import NotationDisplay from './NotationDisplay';
 import Box from '@material-ui/core/Box';
+
+import NotationDisplay from './NotationDisplay';
+import { convertImageBufferIntoImageSrc } from '../../util/converters';
 
 const useStyles = makeStyles(theme => ({
   root: {
     height: '100%',
     cursor: 'pointer',
+    backgroundColor: theme.palette.surface.default,
   },
   image: {
     width: '85%',
@@ -32,22 +35,30 @@ const useStyles = makeStyles(theme => ({
 const PositionCard = (props) => {
   const classes = useStyles();
   const { position } = props;
-  const { name, imageLink } = position;
+  const { baseOpening, previewImage, pgn } = position;
+  const { name } = baseOpening;
+  const imageSrc = convertImageBufferIntoImageSrc(previewImage);
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
-      setOpen(true);
+    setOpen(true);
   }
 
   const handleClose = () => {
-      setOpen(false);
+    setOpen(false);
   }
 
   return (
     <Paper className={classes.root}>
-      <NotationDisplay data={{ open, handleClose, name, imageLink }} />
+      <NotationDisplay
+        open={open}
+        handleClose={handleClose}
+        name={name}
+        imageSrc={imageSrc}
+        notation={pgn}
+      />
       <Box onClick={handleClickOpen}>
-        <img className={classes.image} src={imageLink} alt={name} />
+        <img className={classes.image} src={imageSrc} alt={name} />
         <Typography className={classes.title}>
           {name}
         </Typography>
