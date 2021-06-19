@@ -6,15 +6,16 @@ const Position = require('../../server/models/Position');
 require('dotenv').config({ path: '../../.env' });
 
 const savePNGBuffer = async (collection) => {
-  const imageGenerator = new ChessImageGenerator({
-    light: 'rgb(220, 220, 220)',
-    dark: 'rgb(104, 79, 111)',
-  });
   try {
     collection.forEach(async (pos) => {
-      await imageGenerator.loadPGN(pos.pgn);
+      const imageGenerator = new ChessImageGenerator({
+        light: 'rgb(220, 220, 220)',
+        dark: 'rgb(104, 79, 111)',
+      });
+      imageGenerator.loadPGN(pos.pgn);
       imageGenerator.generateBuffer().then((buffer) => {
         const pngEncoded = buffer.toString('base64');
+        logger.info(pos.baseOpening.name);
         // eslint-disable-next-line no-param-reassign
         pos.previewImage = { data: pngEncoded, contentType: 'image/png;base64' };
         pos.save();
@@ -53,8 +54,10 @@ const updatePhotos = async () => {
 };
 
 const downloadPhotos = async () => {
+  // How many positions you want to download
+  const MAX_POSITION_LIMIT = 10;
   // Add fields inside curly to filter Positions e.g. Positions.find({'pgn' : '1.b4'})
-  Position.find({}).limit(10).then((q) => {
+  Position.find({}).limit(MAX_POSITION_LIMIT).then((q) => {
     downloadPNGImages(q);
   });
 };
