@@ -9,7 +9,7 @@ chai.should();
 const positionsBaseRoute = baseRoutes.positions;
 
 describe('Positions', function () {
-  describe(`GET ${positionsBaseRoute}/search?filter=Polish+Opening`, function () {
+  describe(`GET ${positionsBaseRoute}/search`, function () {
     it('should return an array of positions', function (done) {
       chai.request(app)
         .get(`${baseRoutes.positions}/search?filter=Polish`)
