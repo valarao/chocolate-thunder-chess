@@ -4,9 +4,10 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 import Box from '@material-ui/core/Box';
 import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
-import IconButton from '@material-ui/core/IconButton'
+import IconButton from '@material-ui/core/IconButton';
+
 import { useDispatch } from 'react-redux';
-import { switchToCommonPositions, getSearchedPositions } from '../../redux/actions/positionActions'
+import { switchToCommonPositions, getSearchedPositions } from '../../redux/actions/positionActions';
 
 const useStyles = makeStyles(theme => ({
   root: {
