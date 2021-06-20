@@ -66,8 +66,8 @@ const SearchBar = () => {
   return (
     <Box className={classes.root}>
       <TextField className={classes.searchBar} inputRef={searchFilter} id='outlined-basic' variant='outlined' onKeyDown={onKeyDown} />
-      <IconButton className={classes.searchButton} aria-label='search for openings' size='medium'>
-        <SearchIcon onClick={onClick}/>
+      <IconButton className={classes.searchButton} aria-label='search for openings' size='medium' onClick={onClick}>
+        <SearchIcon />
       </IconButton>
     </Box>
   );
