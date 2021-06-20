@@ -9,7 +9,6 @@ import PositionCard from './PositionCard';
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
-    position: 'relative',
   },
   paper: {
     backgroundColor: theme.palette.background.default,
@@ -31,13 +30,6 @@ const useStyles = makeStyles(theme => ({
     display: 'inline-block',
     margin: '0.5rem 0.5rem',
   },
-  spinner: {
-    position: 'absolute',
-    alignSelf: 'center',
-    width: '50%',
-    marginLeft: '50%',
-    background: theme.palette.background.default,
-  }
 }));
 
 const PositionCardContainer = (props) => {

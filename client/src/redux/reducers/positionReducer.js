@@ -4,7 +4,6 @@ import { CURRENT_POSITION, GET_COMMON_POSITIONS, SWITCH_TO_COMMON } from '../typ
 const initialState = {
   currentPositions: null,
   commonPositions: null,
-  showLoader: true,
 };
 
 const positionReducer = (state = initialState, action) => {
