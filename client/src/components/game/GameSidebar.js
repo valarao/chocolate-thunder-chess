@@ -20,6 +20,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+// TODO: Link opening and variation display to real game data 
 const GameSidebar = () => {
   const classes = useStyles();
   return (

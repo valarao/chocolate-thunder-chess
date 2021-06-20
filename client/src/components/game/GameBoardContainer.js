@@ -25,6 +25,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+// TODO: Add chessboard component
 const GameBoardContainer = () => {
   const classes = useStyles();
   return (
@@ -34,7 +35,7 @@ const GameBoardContainer = () => {
         <Box className={classes.chessboardContainer}>
           Insert Chessboard Here
         </Box>
-        <GamePlayerInfo playerName='Shrek' />
+        <GamePlayerInfo playerName='Shrek' human />
       </Box>
     </Box>
   );
