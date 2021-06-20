@@ -1,10 +1,12 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
+
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import Box from '@material-ui/core/Box';
 import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
 import IconButton from '@material-ui/core/IconButton'
-import { useDispatch, useSelector } from 'react-redux';
+
+import { useDispatch } from 'react-redux';
 import { switchToCommonPositions, getSearchedPositions } from '../../redux/actions/positionActions'
 
 const useStyles = makeStyles(theme => ({
@@ -43,6 +45,17 @@ const SearchBar = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
+  function onKeyDown(e) {
+    debugger;
+    switch(e.key) {
+      case 'Enter':
+        onClick();
+        break;
+      default:
+        return;
+    }
+  }
+
   function onClick() {
     if (searchFilter.current.value !== ''){
       dispatch(getSearchedPositions(searchFilter.current.value));
@@ -54,7 +67,7 @@ const SearchBar = () => {
 
   return (
     <Box className={classes.root}>
-      <TextField className={classes.searchBar} inputRef={searchFilter} id='outlined-basic' variant='outlined' />
+      <TextField className={classes.searchBar} inputRef={searchFilter} id='outlined-basic' variant='outlined' onKeyDown={onKeyDown} />
       <IconButton className={classes.searchButton} aria-label='search for openings' size='medium'>
         <SearchIcon onClick={onClick}/>
       </IconButton>
