@@ -33,7 +33,6 @@ const App = () => {
             <Route path='/' render={(history) => (
               <Navbar location={history.location.pathname} />
             )} />
-
             <Switch>
               <Route exact path="/" component={DashboardPage} />
               <Route path="/about" component={AboutPage} />
@@ -41,7 +40,9 @@ const App = () => {
               <Route path="/info" component={NotationInfoPage} />
               <Route path="/custom" component={CustomNotationPage} />
             </Switch>
-            <Footer/>
+            <Route path='/' render={(history) => (
+              <Footer location={history.location.pathname} />
+            )} />
           </BrowserRouter>
         </Box>
       </ThemeProvider>
