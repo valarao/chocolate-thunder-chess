@@ -12,6 +12,7 @@ import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import AboutPage from './pages/AboutPage';
 import NotationInfoPage from './pages/NotationInfoPage';
 import CustomNotationPage from './pages/CustomNotationPage';
+import Footer from './components/footer/Footer';
 import theme from './util/theme';
 
 const useStyles = makeStyles({
@@ -38,6 +39,7 @@ const App = () => {
               <Route path="/info" component={NotationInfoPage} />
               <Route path="/custom" component={CustomNotationPage} />
             </Switch>
+            <Footer/>
           </BrowserRouter>
         </Box>
       </ThemeProvider>
