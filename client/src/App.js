@@ -34,11 +34,11 @@ const App = () => {
               <Navbar location={history.location.pathname} />
             )} />
             <Switch>
+              <Route exact path="/about" component={AboutPage} />
+              <Route exact path="/game" component={GamePage} />
+              <Route exact path="/info" component={NotationInfoPage} />
+              <Route exact path="/custom" component={CustomNotationPage} />
               <Route exact path="/" component={DashboardPage} />
-              <Route path="/about" component={AboutPage} />
-              <Route path="/game" component={GamePage} />
-              <Route path="/info" component={NotationInfoPage} />
-              <Route path="/custom" component={CustomNotationPage} />
             </Switch>
             <Route path='/' render={(history) => (
               <Footer location={history.location.pathname} />
