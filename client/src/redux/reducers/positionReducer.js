@@ -1,4 +1,3 @@
-import { bindActionCreators } from 'redux';
 import { CURRENT_POSITION, GET_COMMON_POSITIONS, SWITCH_TO_COMMON } from '../types';
 
 const initialState = {

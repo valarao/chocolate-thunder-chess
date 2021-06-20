@@ -39,8 +39,7 @@ const PositionCard = (props) => {
   const { name } = baseOpening;
   const imageSrc = convertImageBufferIntoImageSrc(previewImage);
   const [open, setOpen] = useState(false);
-
-  let fullName = variant ? variant : name;
+  const nameToUse = variant ?? name;
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -55,14 +54,14 @@ const PositionCard = (props) => {
       <NotationDisplay
         open={open}
         handleClose={handleClose}
-        name={fullName}
+        name={nameToUse}
         imageSrc={imageSrc}
         notation={pgn}
       />
       <Box onClick={handleClickOpen}>
-        <img className={classes.image} src={imageSrc} alt={fullName} />
+        <img className={classes.image} src={imageSrc} alt={nameToUse} />
         <Typography className={classes.title}>
-          {fullName}
+          {nameToUse}
         </Typography>
       </Box>
     </Paper>
