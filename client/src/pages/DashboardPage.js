@@ -22,17 +22,17 @@ const useStyles = makeStyles(theme => ({
 const DashboardPage = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const commonPositions = useSelector(state => state.positions.commonPositions);
+  const currentPositions = useSelector(state => state.positions.currentPositions);
 
-  if (commonPositions === null) {
+  if (currentPositions === null) {
     dispatch(getCommonPositions());
   }
 
   return (
     <Box className={classes.root}>
       <SearchBar />
-      {commonPositions && <PositionCardContainer
-        positions={commonPositions}
+      {currentPositions && <PositionCardContainer
+        positions={currentPositions}
       />}
     </Box>
   );
