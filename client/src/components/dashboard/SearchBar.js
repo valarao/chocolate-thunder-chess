@@ -5,7 +5,6 @@ import Box from '@material-ui/core/Box';
 import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
 import IconButton from '@material-ui/core/IconButton'
-
 import { useDispatch } from 'react-redux';
 import { switchToCommonPositions, getSearchedPositions } from '../../redux/actions/positionActions'
 
@@ -46,7 +45,6 @@ const SearchBar = () => {
   const dispatch = useDispatch();
 
   function onKeyDown(e) {
-    debugger;
     switch(e.key) {
       case 'Enter':
         onClick();
