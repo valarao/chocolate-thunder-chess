@@ -1,22 +1,30 @@
-import { GET_COMMON_POSITIONS, SET_CURRENT_POSITION } from '../types';
+import { bindActionCreators } from 'redux';
+import { CURRENT_POSITION, GET_COMMON_POSITIONS, SWITCH_TO_COMMON } from '../types';
 
 const initialState = {
+  currentPositions: null,
   commonPositions: null,
-  currentPosition: null,
+  showLoader: true,
 };
 
 const positionReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_COMMON_POSITIONS:
       return {
-        ...state,
+        ...state, 
+        currentPositions: action.payload,
         commonPositions: action.payload,
       }
-    case SET_CURRENT_POSITION:
+    case CURRENT_POSITION:
       return {
         ...state,
-        currentPosition: action.payload,
-      };
+        currentPositions: action.payload,
+      }
+      case SWITCH_TO_COMMON:
+        return {
+          ...state,
+          currentPositions: state.commonPositions,
+        }
     default:
       return state;
   }
