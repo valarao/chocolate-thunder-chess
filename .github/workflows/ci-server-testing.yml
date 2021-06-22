@@ -16,8 +16,8 @@ jobs:
         with:
           node-version: 14.x
       - run: yarn install --frozen-lockfile
-      - run: yarn lint
       - run: yarn test
         env:
           MONGODB_CONNECTION: "${{ secrets.MONGODB_CONNECTION }}"
       - run: cd client && yarn install && yarn build
+      - run: cd ../ && yarn lint
