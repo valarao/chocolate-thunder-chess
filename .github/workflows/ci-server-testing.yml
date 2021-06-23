@@ -20,4 +20,4 @@ jobs:
         env:
           MONGODB_CONNECTION: "${{ secrets.MONGODB_CONNECTION }}"
       - run: cd client && yarn install && yarn build
-      - run: cd ../ && yarn lint
+      - run: yarn lint
