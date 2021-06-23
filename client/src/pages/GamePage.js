@@ -2,18 +2,24 @@ import React from 'react';
 
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
+
+import GameBoardContainer from '../components/game/GameBoardContainer';
+import GameSidebar from '../components/game/GameSidebar';
 
 const useStyles = makeStyles(theme => ({
   root: {
     textAlign: 'center',
-    backgroundColor: 'red',
-    minHeight: 'calc(90vh - 2rem)'
+    minHeight: '20rem',
+    height: 'calc(100vh - 4rem)',
+    display: 'grid',
+    gridTemplateColumns: '5fr 2fr',
+    [theme.breakpoints.down('sm')]: {
+      gridTemplateColumns: '1fr',
+    },
   },
-  text: {
-    color: theme.palette.text.primary,
-    textAlign: 'center',
-    margin: '1rem 0.5rem',
+  sidebarGridColumn: {
+    margin: '1rem',
+    backgroundColor: theme.palette.surface.default,
   },
 }));
 
@@ -21,7 +27,12 @@ const GamePage = () => {
   const classes = useStyles();
   return (
     <Box className={classes.root}>
-        <Typography className={classes.text} variant='h3'>GAME</Typography>
+      <Box className={classes.gameGridColumn}>
+        <GameBoardContainer />
+      </Box>
+      <Box className={classes.sidebarGridColumn}>
+        <GameSidebar />
+      </Box>
     </Box>
   );
 };
