@@ -34,7 +34,7 @@ router.get('/search', async (req, res) => {
 
 router.get('/variants/:id', async (req, res) => {
   const { id } = req.params;
-  return Position.find({ 'baseOpening.baseId': id }, 'variant previewImage pgn').then((query) => {
+  return Position.find({ 'baseOpening.baseId': id }, 'variant previewImage pgn', { sort: { variant: 1 } }).then((query) => {
     res.status(200).json({ positions: query });
   });
 });
