@@ -7,7 +7,7 @@ import TextField from '@material-ui/core/TextField';
 import IconButton from '@material-ui/core/IconButton';
 
 import { useDispatch } from 'react-redux';
-import { switchToCommonPositions, getSearchedPositions } from '../../redux/actions/positionActions';
+import { getSearchedPositions } from '../../redux/actions/positionActions';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -45,7 +45,7 @@ const SearchBar = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  function onKeyDown(e) {
+  const onKeyDown = (e) =>  {
     switch(e.key) {
       case 'Enter':
         onClick();
@@ -55,12 +55,10 @@ const SearchBar = () => {
     }
   }
 
-  function onClick() {
+  const onClick = () => {
     if (searchFilter.current.value !== ''){
       dispatch(getSearchedPositions(searchFilter.current.value));
       searchFilter.current.value = '';
-    } else {
-      dispatch(switchToCommonPositions());
     }
   }
 

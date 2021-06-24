@@ -15,8 +15,13 @@ router.get('/search', async (req, res) => {
     const regexPositionFilter = { $regex: filterRegex, $options: 'i' };
     return Position.find(
       {
-        $or: [
-          { variant: regexPositionFilter },
+        $and: [
+          {
+            variant: {
+              $exists: false,
+              $eq: null,
+            },
+          },
           { 'baseOpening.name': regexPositionFilter },
         ],
       },
@@ -25,6 +30,13 @@ router.get('/search', async (req, res) => {
     logger.error(err);
     return res.status(500).json(err);
   }
+});
+
+router.get('/variants/:id', async (req, res) => {
+  const { id } = req.params;
+  return Position.find({ 'baseOpening.baseId': id }, 'variant previewImage pgn').then((query) => {
+    res.status(200).json({ positions: query });
+  });
 });
 
 router.get('/common', async (_req, res) => {

@@ -35,11 +35,10 @@ const useStyles = makeStyles(theme => ({
 const PositionCard = (props) => {
   const classes = useStyles();
   const { position } = props;
-  const { baseOpening, previewImage, pgn, variant } = position;
+  const { baseOpening, previewImage, pgn, _id} = position;
   const { name } = baseOpening;
   const imageSrc = convertImageBufferIntoImageSrc(previewImage);
   const [open, setOpen] = useState(false);
-  const nameToUse = variant ?? name;
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -54,14 +53,15 @@ const PositionCard = (props) => {
       <NotationDisplay
         open={open}
         handleClose={handleClose}
-        name={nameToUse}
+        name={name}
         imageSrc={imageSrc}
         notation={pgn}
+        id={_id}
       />
       <Box onClick={handleClickOpen}>
-        <img className={classes.image} src={imageSrc} alt={nameToUse} />
+        <img className={classes.image} src={imageSrc} alt={name} />
         <Typography className={classes.title}>
-          {nameToUse}
+          {name}
         </Typography>
       </Box>
     </Paper>

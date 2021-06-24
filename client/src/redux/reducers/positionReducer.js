@@ -1,8 +1,7 @@
-import { CURRENT_POSITION, GET_COMMON_POSITIONS, SWITCH_TO_COMMON } from '../types';
+import { SET_CURRENT_POSITIONS, GET_COMMON_POSITIONS, GET_VARIANT_POSITIONS } from '../types';
 
 const initialState = {
   currentPositions: null,
-  commonPositions: null,
 };
 
 const positionReducer = (state = initialState, action) => {
@@ -11,18 +10,17 @@ const positionReducer = (state = initialState, action) => {
       return {
         ...state, 
         currentPositions: action.payload,
-        commonPositions: action.payload,
       }
-    case CURRENT_POSITION:
+    case SET_CURRENT_POSITIONS:
       return {
         ...state,
         currentPositions: action.payload,
       }
-      case SWITCH_TO_COMMON:
-        return {
-          ...state,
-          currentPositions: state.commonPositions,
-        }
+    case GET_VARIANT_POSITIONS:
+      const { id, positions } = action.payload;
+      const newState = {...state};
+      newState[id] = positions;
+      return newState;
     default:
       return state;
   }
