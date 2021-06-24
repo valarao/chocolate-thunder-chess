@@ -39,7 +39,6 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-
 const SearchBar = () => {
   const searchFilter = useRef('');
   const classes = useStyles();
