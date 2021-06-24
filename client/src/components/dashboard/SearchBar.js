@@ -1,8 +1,13 @@
+import React, { useRef } from 'react';
+
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import Box from '@material-ui/core/Box';
 import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
-import IconButton from '@material-ui/core/IconButton'
+import IconButton from '@material-ui/core/IconButton';
+
+import { useDispatch } from 'react-redux';
+import { getSearchedPositions } from '../../redux/actions/positionActions';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -34,14 +39,32 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-// TODO: Add functionality to query and filter for openings. 
 const SearchBar = () => {
+  const searchFilter = useRef('');
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  const onKeyDown = (e) =>  {
+    switch(e.key) {
+      case 'Enter':
+        onClick();
+        break;
+      default:
+        return;
+    }
+  }
+
+  const onClick = () => {
+    if (searchFilter.current.value !== ''){
+      dispatch(getSearchedPositions(searchFilter.current.value));
+      searchFilter.current.value = '';
+    }
+  }
 
   return (
     <Box className={classes.root}>
-      <TextField className={classes.searchBar} id='outlined-basic' variant='outlined' />
-      <IconButton className={classes.searchButton} aria-label='search for openings' size='medium'>
+      <TextField className={classes.searchBar} inputRef={searchFilter} id='outlined-basic' variant='outlined' onKeyDown={onKeyDown} />
+      <IconButton className={classes.searchButton} aria-label='search for openings' size='medium' onClick={onClick}>
         <SearchIcon />
       </IconButton>
     </Box>

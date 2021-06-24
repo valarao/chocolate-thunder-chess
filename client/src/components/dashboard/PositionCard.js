@@ -35,7 +35,7 @@ const useStyles = makeStyles(theme => ({
 const PositionCard = (props) => {
   const classes = useStyles();
   const { position } = props;
-  const { baseOpening, previewImage, pgn } = position;
+  const { baseOpening, previewImage, pgn, _id} = position;
   const { name } = baseOpening;
   const imageSrc = convertImageBufferIntoImageSrc(previewImage);
   const [open, setOpen] = useState(false);
@@ -56,6 +56,7 @@ const PositionCard = (props) => {
         name={name}
         imageSrc={imageSrc}
         notation={pgn}
+        id={_id}
       />
       <Box onClick={handleClickOpen}>
         <img className={classes.image} src={imageSrc} alt={name} />
