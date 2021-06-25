@@ -6,6 +6,8 @@ import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 
+import icon from './logo.png';
+
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 import NavDrawer from './NavDrawer';
@@ -28,6 +30,7 @@ const useStyles = makeStyles(theme => ({
       textAlign: 'center',
       display: 'block',
     },
+    marginLeft: '0.6rem',
   },
   leftGrid: {
     display: 'flex',
@@ -52,6 +55,11 @@ const useStyles = makeStyles(theme => ({
   icon: {
     color: theme.palette.text.primary,
     cursor: 'pointer',
+  },
+  image: {
+    float: 'left',
+    paddingTop: '0.2rem',
+    paddingBottom: '0.2rem',
   }
 }));
 
@@ -64,6 +72,7 @@ const Navbar = (props) => {
       <Grid container className={classes.content}>
         <Grid item xs={9} className={classes.leftGrid}>
           <NavDrawer />
+          <img className={classes.image} src={icon} alt='Opening Trainer'/>
           <Typography className={classes.title} component={Link} to='/'>
             OPENING TRAINER
           </Typography>

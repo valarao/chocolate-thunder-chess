@@ -14,6 +14,11 @@ export const NAVBAR_ROUTES = [
     component: InfoIcon,
   },
   {
+    link: '/favourites',
+    display: 'Favourite Notations',
+    component: CreateIcon,
+  },
+  {
     link: '/custom',
     display: 'Custom Notations',
     component: CreateIcon,
