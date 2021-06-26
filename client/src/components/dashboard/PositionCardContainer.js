@@ -5,20 +5,20 @@ import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
 
 import PositionCard from './PositionCard';
-import { getMockPositions } from '../../mock/positions';
 
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
   },
   paper: {
-    backgroundColor: '#d3d3d3',
+    backgroundColor: theme.palette.background.default,
     margin: '0 auto',
     padding: '0 0.5rem',
     display: 'grid',
     gridTemplateColumns: '1fr 1fr 1fr',
     marginBottom: '2rem',
     width: '60%',
+    maxWidth: '1000px',
     [theme.breakpoints.between('sm', 'md')]: {
       width: '75%',
     },
@@ -32,15 +32,15 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const PositionCardContainer = () => {
+const PositionCardContainer = (props) => {
+  const { positions } = props;
   const classes = useStyles();
-  // TODO: Replace mock data with axios call
-  const positions = getMockPositions();
+
   return (
     <Box className={classes.root}>
       <Paper className={classes.paper}>
         {positions.map((position) => (
-          <Box className={classes.cardWrapper} key={position.name}>
+          <Box className={classes.cardWrapper} key={position._id}>
             <PositionCard position={position} />
           </Box>
         ))}
