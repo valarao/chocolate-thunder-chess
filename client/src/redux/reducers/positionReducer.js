@@ -1,7 +1,8 @@
-import { SET_CURRENT_POSITIONS, GET_COMMON_POSITIONS, GET_VARIANT_POSITIONS } from '../types';
+import { SET_CURRENT_POSITIONS, GET_COMMON_POSITIONS, GET_VARIANT_POSITIONS, SET_VISIBLE_POSITIONS } from '../types';
 
 const initialState = {
   currentPositions: null,
+  visiblePositions: null,
 };
 
 const positionReducer = (state = initialState, action) => {
@@ -21,6 +22,19 @@ const positionReducer = (state = initialState, action) => {
       const newState = {...state};
       newState[id] = positions;
       return newState;
+    case SET_VISIBLE_POSITIONS:
+      const startIndex = 9 * (action.payload - 1);
+      let endIndex = startIndex + 9;
+      const positionLength = state.currentPositions.length;
+
+      if (endIndex > positionLength) {
+        endIndex = startIndex + (endIndex - positionLength);
+      }
+
+      return {
+        ...state,
+        visiblePositions: state.currentPositions.slice(startIndex, endIndex),
+      }
     default:
       return state;
   }

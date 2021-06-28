@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
 const DashboardPage = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const currentPositions = useSelector(state => state.positions.currentPositions);
+  const currentPositions = useSelector(state => state.positions.visiblePositions);
 
   if (currentPositions === null) {
     dispatch(getCommonPositions());
