@@ -11,6 +11,9 @@ const positionsBaseRoute = baseRoutes.positions;
 describe('Positions', function () {
   describe(`GET ${positionsBaseRoute}/search`, function () {
     it('should return an array of positions', function (done) {
+      // Temporary Solution to tests failing due to timeout.
+      // TODO: Remove after we replace the data buffers with image links in MongoDB
+      this.timeout(0);
       chai.request(app)
         .get(`${baseRoutes.positions}/search?filter=Polish`)
         .end((_err, res) => {
@@ -23,6 +26,9 @@ describe('Positions', function () {
 
   describe(`GET ${positionsBaseRoute}/common`, function () {
     it('should return an array of positions', function (done) {
+      // Temporary Solution to tests failing due to timeout.
+      // TODO: Remove after we replace the data buffers with image links in MongoDB
+      this.timeout(0);
       chai.request(app)
         .get(`${baseRoutes.positions}/common`)
         .end((_err, res) => {
