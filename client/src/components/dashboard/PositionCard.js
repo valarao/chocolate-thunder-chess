@@ -6,7 +6,6 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
 import NotationDisplay from './NotationDisplay';
-import { convertImageBufferIntoImageSrc } from '../../util/converters';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -35,9 +34,8 @@ const useStyles = makeStyles(theme => ({
 const PositionCard = (props) => {
   const classes = useStyles();
   const { position } = props;
-  const { baseOpening, previewImage, pgn, _id} = position;
+  const { baseOpening, previewImageLink , pgn, _id } = position;
   const { name } = baseOpening;
-  const imageSrc = convertImageBufferIntoImageSrc(previewImage);
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -54,12 +52,12 @@ const PositionCard = (props) => {
         open={open}
         handleClose={handleClose}
         name={name}
-        imageSrc={imageSrc}
+        imageSrc={previewImageLink}
         notation={pgn}
         id={_id}
       />
       <Box onClick={handleClickOpen}>
-        <img className={classes.image} src={imageSrc} alt={name} />
+        <img className={classes.image} src={previewImageLink} alt={name} />
         <Typography className={classes.title}>
           {name}
         </Typography>
