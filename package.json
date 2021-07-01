@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "aws-sdk": "^2.936.0",
     "chess-image-generator": "^1.0.9",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",

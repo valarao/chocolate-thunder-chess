@@ -24,7 +24,7 @@ router.get('/search', async (req, res) => {
           },
           { 'baseOpening.name': regexPositionFilter },
         ],
-      },
+      }, '_id baseOpening variant previewImageLink pgn',
     ).limit(MAX_SEARCH_RESULTS).then((query) => res.status(200).json({ positions: query }));
   } catch (err) {
     logger.error(err);
@@ -34,7 +34,7 @@ router.get('/search', async (req, res) => {
 
 router.get('/variants/:id', async (req, res) => {
   const { id } = req.params;
-  return Position.find({ 'baseOpening.baseId': id }, 'variant previewImage pgn', { sort: { variant: 1 } }).then((query) => {
+  return Position.find({ 'baseOpening.baseId': id }, 'variant previewImageLink pgn', { sort: { variant: 1 } }).then((query) => {
     res.status(200).json({ positions: query });
   });
 });
@@ -69,7 +69,7 @@ router.get('/common', async (_req, res) => {
         _id: {
           $in: listOfIds,
         },
-      }).then((findQuery) => res.status(200).json({ positions: findQuery }));
+      }, '_id baseOpening variant previewImageLink pgn').then((findQuery) => res.status(200).json({ positions: findQuery }));
     });
   } catch (err) {
     logger.error(err);
