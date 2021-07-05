@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import Paper from '@material-ui/core/Paper';
@@ -9,8 +9,8 @@ import NotationDisplay from './NotationDisplay';
 import IconButton from '@material-ui/core/IconButton';
 import StarIcon from '@material-ui/icons/Star';
 import StarOutlineIcon from '@material-ui/icons/StarOutline';
-import { useDispatch } from 'react-redux';
-import { addFavouritePosition } from '../../redux/actions/favouriteActions';
+import { useDispatch, useSelector } from 'react-redux';
+import { addFavouritePosition, deleteFavouritePosition } from '../../redux/actions/favouriteActions';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -50,15 +50,16 @@ const PositionCard = (props) => {
   const [open, setOpen] = useState(false);
   const [isFavourite, setIsFavourite] = useState(false);
 
+  const currentFavourites = useSelector(state => state.favourites.currentFavourites);
+
   const dispatch = useDispatch();
 
   const handleFavourite = () => {
-    setIsFavourite(true);
-    dispatch(addFavouritePosition(position))
+    dispatch(addFavouritePosition(position));
   }
 
   const handleUnfavourite = () => {
-    setIsFavourite(false);
+    dispatch(deleteFavouritePosition(position._id));
   }
 
   const handleClickOpen = () => {
@@ -68,6 +69,17 @@ const PositionCard = (props) => {
   const handleClose = () => {
     setOpen(false);
   }
+
+  useEffect(() => {
+    if (currentFavourites !== null && currentFavourites.find(pos => pos._id === _id)) {
+      setIsFavourite(true);
+    }
+    else {
+      setIsFavourite(false);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentFavourites])
+  
 
   return (
     <Paper className={classes.root}>

@@ -1,4 +1,4 @@
-import { ADD_FAVOURITE_POSITION, GET_FAVOURITE_POSITIONS } from '../types';
+import { GET_FAVOURITE_POSITIONS } from '../types';
 
 const initialState = {
   currentFavourites: null,
@@ -11,11 +11,6 @@ const favouriteReducer = (state = initialState, action) => {
         ...state, 
         currentFavourites: action.payload,
       }
-    case ADD_FAVOURITE_POSITION:
-        return {
-            ...state, 
-        currentFavourites: action.payload,
-        }
     default:
       return state;
   }

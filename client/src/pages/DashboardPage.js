@@ -8,6 +8,7 @@ import PositionCardContainer from '../components/dashboard/PositionCardContainer
 
 import { useDispatch, useSelector } from 'react-redux';
 import { getCommonPositions } from '../redux/actions/positionActions';
+import { getFavouritePositions } from '../redux/actions/favouriteActions';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -24,9 +25,13 @@ const DashboardPage = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const currentPositions = useSelector(state => state.positions.currentPositions);
+  const currentFavourites = useSelector(state => state.favourites.currentFavourites);
 
   if (currentPositions === null) {
     dispatch(getCommonPositions());
+  }
+  if (currentFavourites === null) {
+    dispatch(getFavouritePositions());
   }
 
   return (
