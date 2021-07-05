@@ -19,7 +19,13 @@ const positionSchema = new Schema({
   variant: {
     type: String,
   },
-  previewImage: { data: Buffer, contentType: String },
+  previewImage: {
+    data: Buffer,
+    contentType: String,
+  },
+  previewImageLink: {
+    type: String,
+  },
 });
 
 const positions = mongoose.model('Position', positionSchema, 'positions');

@@ -6,7 +6,6 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
 import NotationDisplay from './NotationDisplay';
-import { convertImageBufferIntoImageSrc } from '../../util/converters';
 import IconButton from '@material-ui/core/IconButton';
 import StarIcon from '@material-ui/icons/Star';
 import StarOutlineIcon from '@material-ui/icons/StarOutline';
@@ -46,9 +45,8 @@ const useStyles = makeStyles(theme => ({
 const PositionCard = (props) => {
   const classes = useStyles();
   const { position } = props;
-  const { _id, baseOpening, pgn, previewImage, previewImageLink} = position;
+  const { baseOpening, previewImageLink , pgn, _id } = position;
   const { name } = baseOpening;
-  const imageSrc = convertImageBufferIntoImageSrc(previewImage);
   const [open, setOpen] = useState(false);
   const [isFavourite, setIsFavourite] = useState(false);
 
@@ -77,7 +75,7 @@ const PositionCard = (props) => {
         open={open}
         handleClose={handleClose}
         name={name}
-        imageSrc={imageSrc}
+        imageSrc={previewImageLink}
         notation={pgn}
         id={_id}
       />
@@ -88,7 +86,7 @@ const PositionCard = (props) => {
         <StarOutlineIcon fontSize='large' />
       </IconButton> }
       <Box onClick={handleClickOpen}>
-        <img className={classes.image} src={imageSrc} alt={name} />
+        <img className={classes.image} src={previewImageLink} alt={name} />
         <Typography className={classes.title}>
           {name}
         </Typography>

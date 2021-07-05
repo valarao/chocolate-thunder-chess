@@ -16,7 +16,6 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { getVariantPositions } from '../../redux/actions/positionActions';
-import { convertImageBufferIntoImageSrc } from '../../util/converters';
 
 import CloseIcon from '@material-ui/icons/Close';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
@@ -95,7 +94,7 @@ const NotationDisplay = (props) => {
       setImg(imageSrc);
     } else {
       setNotation(option.pgn);
-      setImg(convertImageBufferIntoImageSrc(option.previewImage));
+      setImg(option.previewImageLink);
     }
   };
 
