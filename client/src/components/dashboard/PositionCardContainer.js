@@ -6,6 +6,7 @@ import Paper from '@material-ui/core/Paper';
 
 import PositionCard from './PositionCard';
 
+
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
@@ -35,6 +36,7 @@ const useStyles = makeStyles(theme => ({
 const PositionCardContainer = (props) => {
   const { positions } = props;
   const classes = useStyles();
+
 
   return (
     <Box className={classes.root}>

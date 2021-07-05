@@ -3,7 +3,7 @@ const express = require('express');
 const logger = require('../util/logger');
 
 const router = express.Router();
-const Position = require('../models/Position');
+const Position = require('../models/Position').dashboardPositions;
 
 router.get('/search', async (req, res) => {
   try {
