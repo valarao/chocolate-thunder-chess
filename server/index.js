@@ -14,7 +14,7 @@ const app = express();
 initializeDatabaseConnection(process.env.MONGODB_CONNECTION);
 
 // Middleware
-app.use(express.json());
+app.use(express.json({ limit: '2mb' }));
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 

@@ -10,6 +10,8 @@ import { convertImageBufferIntoImageSrc } from '../../util/converters';
 import IconButton from '@material-ui/core/IconButton';
 import StarIcon from '@material-ui/icons/Star';
 import StarOutlineIcon from '@material-ui/icons/StarOutline';
+import { useDispatch } from 'react-redux';
+import { addFavouritePosition } from '../../redux/actions/favouriteActions';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -44,14 +46,21 @@ const useStyles = makeStyles(theme => ({
 const PositionCard = (props) => {
   const classes = useStyles();
   const { position } = props;
-  const { baseOpening, previewImage, pgn, _id} = position;
+  const { _id, baseOpening, pgn, previewImage, previewImageLink} = position;
   const { name } = baseOpening;
   const imageSrc = convertImageBufferIntoImageSrc(previewImage);
   const [open, setOpen] = useState(false);
   const [isFavourite, setIsFavourite] = useState(false);
 
+  const dispatch = useDispatch();
+
   const handleFavourite = () => {
-    setIsFavourite(!isFavourite);
+    setIsFavourite(true);
+    dispatch(addFavouritePosition(position))
+  }
+
+  const handleUnfavourite = () => {
+    setIsFavourite(false);
   }
 
   const handleClickOpen = () => {
@@ -72,10 +81,12 @@ const PositionCard = (props) => {
         notation={pgn}
         id={_id}
       />
-      <IconButton className={classes.favButton} onClick={handleFavourite} size='small' color='primary'>
-        {isFavourite && <StarIcon fontSize='large' />}
-        {!isFavourite && <StarOutlineIcon fontSize='large' />}
-      </IconButton>
+      {isFavourite && <IconButton className={classes.favButton} onClick={handleUnfavourite} size='small' color='primary'>
+        <StarIcon fontSize='large' />
+      </IconButton> }
+      {!isFavourite && <IconButton className={classes.favButton} onClick={handleFavourite} size='small' color='primary'>
+        <StarOutlineIcon fontSize='large' />
+      </IconButton> }
       <Box onClick={handleClickOpen}>
         <img className={classes.image} src={imageSrc} alt={name} />
         <Typography className={classes.title}>
