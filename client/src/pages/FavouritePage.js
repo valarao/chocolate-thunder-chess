@@ -4,7 +4,6 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 
-import SearchBar from '../components/dashboard/SearchBar';
 import PositionCardContainer from '../components/dashboard/PositionCardContainer';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFavouritePositions } from '../redux/actions/favouriteActions';
@@ -32,7 +31,6 @@ const FavouriteNotationPage = () => {
   return (
     <Box className={classes.root}>
       <Typography className={classes.text} variant='h3'>FAVOURITE NOTATIONS</Typography>
-      <SearchBar />
       {currentFavourites && <PositionCardContainer
         positions={currentFavourites}
       />}
