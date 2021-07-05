@@ -47,17 +47,15 @@ const PositionCard = (props) => {
   const { position } = props;
   const { baseOpening, previewImageLink , pgn, _id } = position;
   const { name } = baseOpening;
+  
   const [open, setOpen] = useState(false);
   const [isFavourite, setIsFavourite] = useState(false);
-
   const currentFavourites = useSelector(state => state.favourites.currentFavourites);
-
   const dispatch = useDispatch();
 
   const handleFavourite = () => {
     dispatch(addFavouritePosition(position));
   }
-
   const handleUnfavourite = () => {
     dispatch(deleteFavouritePosition(position._id));
   }
@@ -65,7 +63,6 @@ const PositionCard = (props) => {
   const handleClickOpen = () => {
     setOpen(true);
   }
-
   const handleClose = () => {
     setOpen(false);
   }

@@ -37,7 +37,6 @@ const PositionCardContainer = (props) => {
   const { positions } = props;
   const classes = useStyles();
 
-
   return (
     <Box className={classes.root}>
       <Paper className={classes.paper}>
