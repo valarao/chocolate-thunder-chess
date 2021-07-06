@@ -2,11 +2,19 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-// TODO: This is a placeholder. Update after database schema design is complete.
 const userSchema = new Schema({
   name: {
     type: String,
     required: true,
+  },
+  accessToken: {
+    type: String,
+  },
+  email: {
+    type: String,
+  },
+  id: {
+    type: String,
   },
 });
 

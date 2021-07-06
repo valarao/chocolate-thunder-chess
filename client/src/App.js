@@ -15,6 +15,7 @@ import CustomNotationPage from './pages/CustomNotationPage';
 import Footer from './components/footer/Footer';
 import theme from './util/theme';
 import GamePage from './pages/GamePage';
+import LoginPage from './pages/LoginPage';
 
 const useStyles = makeStyles({
   root: {
@@ -39,6 +40,7 @@ const App = () => {
               <Route exact path="/info" component={NotationInfoPage} />
               <Route exact path="/custom" component={CustomNotationPage} />
               <Route exact path="/" component={DashboardPage} />
+              <Route exact path="/login" component={LoginPage}/>
             </Switch>
             <Route path='/' render={(history) => (
               <Footer location={history.location.pathname} />

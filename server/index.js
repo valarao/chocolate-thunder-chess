@@ -10,7 +10,7 @@ const logger = require('./util/logger');
 const baseRoutes = require('./constants/base-routes');
 
 const app = express();
-initializeDatabaseConnection(process.env.MONGODB_CONNECTION);
+initializeDatabaseConnection('mongodb+srv://alvin:alvinlo@white-cocoa.o50vw.mongodb.net/opening-trainer?retryWrites=true&w=majority');
 
 // Middleware
 app.use(express.json());
