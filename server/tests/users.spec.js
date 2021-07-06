@@ -14,7 +14,6 @@ describe('Users', function () {
         .request(app)
         .put(`${baseRoutes.users}/auth`)
         .send({
-          userID: 'test-userID',
           name: 'test-name',
           id: 'test-id',
           accessToken: 'test-access-token',
@@ -34,7 +33,6 @@ describe('Users', function () {
         .request(app)
         .put(`${baseRoutes.users}/auth`)
         .send({
-          userID: 'updated-userID',
           name: 'updated-name',
           id: 'test-id',
           accessToken: 'test-access-token',
