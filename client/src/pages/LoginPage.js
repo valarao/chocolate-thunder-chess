@@ -21,6 +21,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const FACEBOOK_APP_ID = 1159920384501837;
+
 const LoginPage = () => {
   const dispatch = useDispatch();
   const classes = useStyles();
@@ -29,7 +31,7 @@ const LoginPage = () => {
     <Box className={classes.root}>
       <LoginSocialFacebook
         className={classes.loginButton}
-        appId={process.env.REACT_APP_FACEBOOK_APP_ID}
+        appId={FACEBOOK_APP_ID}
         onResolve={async ({ data }) => {
           await dispatch(
             userAuth({

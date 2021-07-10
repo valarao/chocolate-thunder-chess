@@ -9,12 +9,15 @@ const userSchema = new Schema({
   },
   accessToken: {
     type: String,
+    required: true,
   },
   email: {
     type: String,
+    required: true,
   },
   id: {
     type: String,
+    required: true,
   },
 });
 
