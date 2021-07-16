@@ -2,16 +2,20 @@ const express = require('express');
 const logger = require('../util/logger');
 
 const router = express.Router();
+const User = require('../models/User');
 
-// TODO: This is a placeholder. Update after application API route design is complete.
-/* GET users listing. */
-router.get('/', async (_req, res) => {
+router.put('/auth', async (req, res) => {
   try {
-    const data = 'Placeholder GET';
-    return res.status(200).json({ message: data });
-  } catch (err) {
-    logger.error(err);
-    return res.status(500).json(err);
+    return User.findOneAndUpdate({ id: req.body.id }, req.body, {
+      upsert: true,
+      new: true,
+      rawResult: true,
+    }).then((query) => {
+      res.status(200).json({ user: query });
+    });
+  } catch (error) {
+    logger.error(error);
+    return res.status(500).json(error);
   }
 });
 
