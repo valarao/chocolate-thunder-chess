@@ -5,6 +5,7 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
 
 import icon from './logo.png';
 
@@ -90,9 +91,9 @@ const Navbar = (props) => {
           </Box>
         </Grid>
         <Grid item xs align='right' className={classes.rightGrid}>
-          <Typography className={classes.icon} >
-            <AccountCircleIcon fontSize='large' />
-          </Typography>
+          <IconButton className={classes.icon} component={Link} to='/login'>
+            <AccountCircleIcon fontSize='large'/>
+          </IconButton>
         </Grid>
       </Grid>
     </Box>
