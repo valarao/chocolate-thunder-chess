@@ -6,7 +6,6 @@ import Paper from '@material-ui/core/Paper';
 
 import PositionCard from './PositionCard';
 
-
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
