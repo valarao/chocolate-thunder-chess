@@ -6,6 +6,7 @@ require('dotenv').config();
 const { initializeDatabaseConnection } = require('./database/connection');
 const usersRouter = require('./routes/users');
 const positionsRouter = require('./routes/positions');
+const favouritesRouter = require('./routes/favourites');
 const logger = require('./util/logger');
 const baseRoutes = require('./constants/base-routes');
 
@@ -13,13 +14,14 @@ const app = express();
 initializeDatabaseConnection(process.env.MONGODB_CONNECTION);
 
 // Middleware
-app.use(express.json());
+app.use(express.json({ limit: '2mb' }));
 app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
 // API Routers
 app.use(baseRoutes.users, usersRouter);
 app.use(baseRoutes.positions, positionsRouter);
+app.use(baseRoutes.favourites, favouritesRouter);
 
 // Heroku Post-Build Path
 app.use(express.static(path.join(__dirname, '../client/build')));

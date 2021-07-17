@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/lab": "^4.0.0-alpha.58",
+    "axios": "^0.21.1",
     "aws-sdk": "^2.936.0",
     "chess-image-generator": "^1.0.9",
     "cors": "^2.8.5",
@@ -10,7 +12,8 @@
     "express": "^4.17.1",
     "mongoose": "^5.12.12",
     "pino": "^6.11.3",
-    "pino-pretty": "^5.0.1"
+    "pino-pretty": "^5.0.1",
+    "react-router-dom": "^5.2.0"
   },
   "scripts": {
     "start": "node server/index.js",

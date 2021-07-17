@@ -11,6 +11,7 @@ import DashboardPage from './pages/DashboardPage';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import AboutPage from './pages/AboutPage';
 import NotationInfoPage from './pages/NotationInfoPage';
+import FavouriteNotationPage from './pages/FavouritePage';
 import CustomNotationPage from './pages/CustomNotationPage';
 import Footer from './components/footer/Footer';
 import theme from './util/theme';
@@ -38,6 +39,7 @@ const App = () => {
               <Route exact path="/about" component={AboutPage} />
               <Route exact path="/game" component={GamePage} />
               <Route exact path="/info" component={NotationInfoPage} />
+              <Route exact path="/favourites" component={FavouriteNotationPage} />
               <Route exact path="/custom" component={CustomNotationPage} />
               <Route exact path="/" component={DashboardPage} />
               <Route exact path="/login" component={LoginPage}/>

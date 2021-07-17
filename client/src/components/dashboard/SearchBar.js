@@ -8,6 +8,8 @@ import IconButton from '@material-ui/core/IconButton';
 
 import { useDispatch } from 'react-redux';
 import { getSearchedPositions } from '../../redux/actions/positionActions';
+import { useLocation } from 'react-router-dom';
+import { getSearchedFavourites } from '../../redux/actions/favouriteActions';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -42,6 +44,7 @@ const useStyles = makeStyles(theme => ({
 const SearchBar = () => {
   const searchFilter = useRef('');
   const classes = useStyles();
+  const location = useLocation();
   const dispatch = useDispatch();
 
   const onKeyDown = (e) =>  {
@@ -55,8 +58,17 @@ const SearchBar = () => {
   }
 
   const onClick = () => {
-    if (searchFilter.current.value !== ''){
-      dispatch(getSearchedPositions(searchFilter.current.value));
+    if (searchFilter.current.value !== '') {
+      switch (location.pathname) {
+        case '/':
+          dispatch(getSearchedPositions(searchFilter.current.value));
+          break;
+        case '/favourites':
+          dispatch(getSearchedFavourites(searchFilter.current.value));
+          break;
+        default:
+          return;
+      }
       searchFilter.current.value = '';
     }
   }
