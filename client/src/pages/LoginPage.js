@@ -26,6 +26,7 @@ const LoginPage = () => {
   const classes = useStyles();
 
   const responseGoogle = (response) => {
+    console.log(response);
     dispatch(authenticateUserWithGoogle(response.profileObj));
   }
 
