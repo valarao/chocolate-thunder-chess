@@ -14,16 +14,17 @@ describe('Users', function () {
         .request(app)
         .put(`${baseRoutes.users}/auth`)
         .send({
-          name: 'test-name',
           id: 'test-id',
-          accessToken: 'test-access-token',
-          email: 'test-email@mail.com',
+          firstName: 'first-name',
+          lastName: 'last-name',
+          imageLink: 'image-link',
         })
         .end((_err, res) => {
           res.should.have.status(200);
           expect(res.body.user.value.id).to.equal('test-id');
-          expect(res.body.user.value.name).to.equal('test-name');
-          expect(res.body.user.value.email).to.equal('test-email@mail.com');
+          expect(res.body.user.value.firstName).to.equal('first-name');
+          expect(res.body.user.value.lastName).to.equal('last-name');
+          expect(res.body.user.value.imageLink).to.equal('image-link');
           done();
         });
     });
@@ -41,8 +42,9 @@ describe('Users', function () {
         .end((_err, res) => {
           res.should.have.status(200);
           expect(res.body.user.value.id).to.equal('test-id');
-          expect(res.body.user.value.name).to.equal('updated-name');
-          expect(res.body.user.value.email).to.be.equal('updated-email');
+          expect(res.body.user.value.firstName).to.equal('first-name');
+          expect(res.body.user.value.lastName).to.equal('last-name');
+          expect(res.body.user.value.imageLink).to.equal('image-link');
           done();
         });
     });
