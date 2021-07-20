@@ -1,11 +1,12 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import positionReducer from './reducers/positionReducer';
+import userReducer from './reducers/userReducer';
 import thunk from 'redux-thunk';
 
 const initialState = {};
 const rootReducer = combineReducers({
   positions: positionReducer,
-  // TODO: Add new states reducers here
+  users: userReducer,
 });
 
 const store = createStore(
