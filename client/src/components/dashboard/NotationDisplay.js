@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-import { Link } from 'react-router-dom';
-
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
@@ -73,7 +71,7 @@ const useStyles = makeStyles(theme => ({
 
 const NotationDisplay = (props) => {
   const classes = useStyles();
-  const { open, handleClose, name, id, notation, imageSrc} = props;
+  const { open, handleClose, handlePlay, name, id, notation, imageSrc} = props;
   const [notationState, setNotation] = useState(notation);
   const [imgState, setImg] = useState(imageSrc);
   const [tooltipClicked, setTooltipClicked] = useState('Copy Text');
@@ -158,7 +156,7 @@ const NotationDisplay = (props) => {
             </Tooltip>
           </Box>
           <Box>
-            <Button className={classes.buttons} component={Link} to='/game' variant='outlined'>Play</Button>
+            <Button className={classes.buttons} variant='outlined' onClick={handlePlay}>Play</Button>
             <Button className={classes.buttons} variant='outlined' onClick={handleClose}>Cancel</Button>
           </Box>
         </DialogContent>

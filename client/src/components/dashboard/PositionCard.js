@@ -5,6 +5,8 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
+import { GAMEPLAY_URL } from '../../util/gameplay.js';
+
 import NotationDisplay from './NotationDisplay';
 
 const useStyles = makeStyles(theme => ({
@@ -46,11 +48,16 @@ const PositionCard = (props) => {
     setOpen(false);
   }
 
+  const handlePlay = async () => {
+    window.open(GAMEPLAY_URL)
+  }
+
   return (
     <Paper className={classes.root}>
       <NotationDisplay
         open={open}
         handleClose={handleClose}
+        handlePlay={handlePlay}
         name={name}
         imageSrc={previewImageLink}
         notation={pgn}
