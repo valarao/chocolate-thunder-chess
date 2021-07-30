@@ -33,9 +33,15 @@ const useStyles = makeStyles(theme => ({
 
 const PositionCard = (props) => {
   const classes = useStyles();
-  const { position } = props;
-  const { baseOpening, previewImageLink , pgn, _id } = position;
-  const { name } = baseOpening;
+  const { position, isCustom } = props;
+  const { baseOpening, previewImageLink , pgn, _id, owner } = position;
+
+  let name = '';
+  if (isCustom) {
+    name = position.name;
+  } else {
+    name = baseOpening.name;
+  }
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -55,6 +61,8 @@ const PositionCard = (props) => {
         imageSrc={previewImageLink}
         notation={pgn}
         id={_id}
+        isCustom={isCustom}
+        owner={owner}
       />
       <Box onClick={handleClickOpen}>
         <img className={classes.image} src={previewImageLink} alt={name} />

@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const PositionCardContainer = (props) => {
-  const { positions } = props;
+  const { positions, isCustom } = props;
   const classes = useStyles();
 
   return (
@@ -41,7 +41,7 @@ const PositionCardContainer = (props) => {
       <Paper className={classes.paper}>
         {positions.map((position) => (
           <Box className={classes.cardWrapper} key={position._id}>
-            <PositionCard position={position} />
+            <PositionCard position={position} isCustom={isCustom}/>
           </Box>
         ))}
       </Paper>

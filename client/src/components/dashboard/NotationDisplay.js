@@ -15,7 +15,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { getVariantPositions } from '../../redux/actions/positionActions';
+import { getVariantPositions, deleteCustomPosition } from '../../redux/actions/positionActions';
 
 import CloseIcon from '@material-ui/icons/Close';
 import FileCopyIcon from '@material-ui/icons/FileCopy';
@@ -50,7 +50,8 @@ const useStyles = makeStyles(theme => ({
   notationCopy: {
     textAlign: 'right',
     marginTop: '1.5rem',
-    height: '70px',
+    minHeight: '70px',
+    maxHeight: '140px',
   },
   copyButton: {
     position: 'relative',
@@ -60,7 +61,6 @@ const useStyles = makeStyles(theme => ({
   buttons: {
     width: '6rem',
     float: 'middle',
-    marginTop: 75,
     marginLeft: 15,
     marginRight: 15,
   },
@@ -68,12 +68,12 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'right',
     marginTop: '1.5rem',
     height: '70px',
-  }
+  },
 }));
 
 const NotationDisplay = (props) => {
   const classes = useStyles();
-  const { open, handleClose, name, id, notation, imageSrc} = props;
+  const { open, handleClose, name, id, notation, imageSrc, isCustom, owner} = props;
   const [notationState, setNotation] = useState(notation);
   const [imgState, setImg] = useState(imageSrc);
   const [tooltipClicked, setTooltipClicked] = useState('Copy Text');
@@ -85,7 +85,7 @@ const NotationDisplay = (props) => {
 
   const clickTooltip = () => {
     setTooltipClicked('Copied!')
-    navigator.clipboard.writeText(notation);
+    navigator.clipboard.writeText(notationState);
   }
 
   const onVariantChange = (option) => {
@@ -98,10 +98,15 @@ const NotationDisplay = (props) => {
     }
   };
 
+  const handleDelete = () => {
+    dispatch(deleteCustomPosition(owner, id));
+    handleClose();
+  }
+
   const variantOptions = useSelector(state => state.positions[id]);
 
   useEffect(() => {
-    if (variantOptions === undefined) {
+    if (variantOptions === undefined && !isCustom) {
       dispatch(getVariantPositions(id));
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -121,10 +126,10 @@ const NotationDisplay = (props) => {
         <DialogContent dividers>
           <img className={classes.image} src={imgState} alt={name} />
           <Box className={classes.notationCopy}>
-            <Autocomplete
+            {!isCustom && <Autocomplete
               disabled={variantOptions === undefined || variantOptions.length === 0}
               id='variant-combo-box'
-              freeSolo={false}
+              freeSolo={false}           
               onChange={(event, value) => {onVariantChange(value)}}
               options={variantOptions}
               getOptionLabel={(option) => option.variant}
@@ -132,7 +137,7 @@ const NotationDisplay = (props) => {
               className={classes.variationOptions}
               renderInput={(params) => 
               <TextField {...params} label={ variantOptions === undefined ? 'Loading...' : variantOptions.length !== 0 ? 'Select Variation' : 'No Variations Available'} variant='outlined' />}
-            />
+            />}
             <TextField
               label='PGN Notation'
               id='outlined-read-only-input'
@@ -159,6 +164,7 @@ const NotationDisplay = (props) => {
           </Box>
           <Box>
             <Button className={classes.buttons} component={Link} to='/game' variant='outlined'>Play</Button>
+            {isCustom && <Button className={classes.buttons} variant='outlined' onClick={handleDelete}>Delete</Button>}
             <Button className={classes.buttons} variant='outlined' onClick={handleClose}>Cancel</Button>
           </Box>
         </DialogContent>

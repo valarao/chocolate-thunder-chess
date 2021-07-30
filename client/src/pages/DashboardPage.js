@@ -34,6 +34,7 @@ const DashboardPage = () => {
       <SearchBar />
       {currentPositions && <PositionCardContainer
         positions={currentPositions}
+        isCustom={false}
       />}
     </Box>
   );

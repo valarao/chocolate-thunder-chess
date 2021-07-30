@@ -1,7 +1,8 @@
-import { SET_CURRENT_POSITIONS, GET_COMMON_POSITIONS, GET_VARIANT_POSITIONS } from '../types';
+import { SET_CURRENT_POSITIONS, GET_COMMON_POSITIONS, GET_VARIANT_POSITIONS, GET_CUSTOM_POSITIONS } from '../types';
 
 const initialState = {
   currentPositions: null,
+  customPositions: null,
 };
 
 const positionReducer = (state = initialState, action) => {
@@ -21,6 +22,12 @@ const positionReducer = (state = initialState, action) => {
       const newState = {...state};
       newState[id] = positions;
       return newState;
+
+    case GET_CUSTOM_POSITIONS:
+      return {
+        ...state,
+        customPositions: action.payload,
+      }
     default:
       return state;
   }
