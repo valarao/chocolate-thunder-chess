@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import makeStyles from '@material-ui/core/styles/makeStyles';
@@ -11,6 +11,8 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 import NavDrawer from './NavDrawer';
 import { NAVBAR_ROUTES } from '../../util/routes';
+import { useSelector } from 'react-redux';
+import LoginPage from '../../pages/LoginPage';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -59,6 +61,17 @@ const useStyles = makeStyles(theme => ({
 const Navbar = (props) => {
   const classes = useStyles();
   const { location } = props;
+  const [loginPrompt, setLoginPrompt] = useState(false);
+  const user = useSelector(state => state.users.user);
+  const loggedIn = user !== null;
+
+  const openLoginPrompt = () => {
+    setLoginPrompt(true);
+  }
+
+  const closeLoginPrompt = () => {
+    setLoginPrompt(false);
+  }
 
   return (
     <Box className={classes.root}>
@@ -82,9 +95,18 @@ const Navbar = (props) => {
           </Box>
         </Grid>
         <Grid item xs align='right' className={classes.rightGrid}>
-          <IconButton className={classes.icon} component={Link} to='/login'>
-            <AccountCircleIcon fontSize='large'/>
-          </IconButton>
+          <Box>
+            <LoginPage 
+              closeLoginPrompt={closeLoginPrompt}
+              open={loginPrompt}
+            />
+            <IconButton className={classes.icon} onClick={openLoginPrompt}>
+              <AccountCircleIcon fontSize='large'/>
+              { loggedIn && <Typography>
+                {`${user.firstName} ${user.lastName}`}
+              </Typography> }
+            </IconButton>
+          </Box>
         </Grid>
       </Grid>
     </Box>
