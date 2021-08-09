@@ -10,8 +10,6 @@ Our project would primarily <b>allow players to retrieve common opening position
 
 By retrieving these opening positions, players can <b>input the notation into other Chess websites for analysis</b>, or even potentially play games (against themselves or an [AI engine](https://en.wikipedia.org/wiki/Stockfish_(chess))) starting at the positions requested. 
 
-Given <b>time constraints</b>, we can allow players to create their own user accounts to track the openings they've requested/analyzed, allow players to play against their friends, or setup their own custom positions.
-
 ## Project Task Requirements
 
 ### Minimal Requirements
@@ -22,10 +20,10 @@ Given <b>time constraints</b>, we can allow players to create their own user acc
 
 ### Standard Requirements
 
-1. As a user, I should be able to <b>play against myself</b> starting at a given position notation
-2. As a user, I should be able to <b>play against a computer</b> starting at a given position notation
+1. As a user, I should be able to <b>create and refer back</b> to my own custom openings that I've created.
+2. As a user, I should be able to <b>favourite openings</b> and be able to refer to them at a later point.
 3. As a user, I should be able to <b>randomly retrieve the notation for a specific position</b> by clicking on a button ("Give me a position")
-4. As a user, I should be able to <b>find more information about an opening position </b> in addition to the opening's notation (Wikipedia page link, past Master's Games with the opening, etc.) 
+4. As a user, I should be able to <b>quickly redirect myself</b> to another chess application.
 
 ### Stretch Requirements
 
