@@ -7,6 +7,7 @@ const { initializeDatabaseConnection } = require('./database/connection');
 const usersRouter = require('./routes/users');
 const positionsRouter = require('./routes/positions');
 const favouritesRouter = require('./routes/favourites');
+const customPositionsRouter = require('./routes/customPositions');
 const logger = require('./util/logger');
 const baseRoutes = require('./constants/base-routes');
 
@@ -22,6 +23,7 @@ app.use(cors());
 app.use(baseRoutes.users, usersRouter);
 app.use(baseRoutes.positions, positionsRouter);
 app.use(baseRoutes.favourites, favouritesRouter);
+app.use(baseRoutes.customPositions, customPositionsRouter);
 
 // Heroku Post-Build Path
 app.use(express.static(path.join(__dirname, '../client/build')));

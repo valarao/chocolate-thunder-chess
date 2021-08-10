@@ -5,6 +5,8 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 
+import { GAMEPLAY_URL } from '../../util/gameplay.js';
+
 import NotationDisplay from './NotationDisplay';
 import IconButton from '@material-ui/core/IconButton';
 import StarIcon from '@material-ui/icons/Star';
@@ -44,10 +46,15 @@ const useStyles = makeStyles(theme => ({
 
 const PositionCard = (props) => {
   const classes = useStyles();
-  const { position } = props;
-  const { baseOpening, previewImageLink , pgn, _id } = position;
-  const { name } = baseOpening;
-  
+  const { position, isCustom } = props;
+  const { baseOpening, previewImageLink , pgn, _id, owner } = position;
+
+  let name = '';
+  if (isCustom) {
+    name = position.name;
+  } else {
+    name = baseOpening.name;
+  }
   const [open, setOpen] = useState(false);
   const [isFavourite, setIsFavourite] = useState(false);
   const currentFavourites = useSelector(state => state.favourites.currentFavourites);
@@ -67,6 +74,7 @@ const PositionCard = (props) => {
     setOpen(false);
   }
 
+<<<<<<< HEAD
   useEffect(() => {
     if (currentFavourites !== null && currentFavourites.find(pos => pos._id === _id)) {
       setIsFavourite(true);
@@ -77,16 +85,24 @@ const PositionCard = (props) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentFavourites])
   
+=======
+  const handlePlay = async () => {
+    window.open(GAMEPLAY_URL)
+  }
+>>>>>>> main
 
   return (
     <Paper className={classes.root}>
       <NotationDisplay
         open={open}
         handleClose={handleClose}
+        handlePlay={handlePlay}
         name={name}
         imageSrc={previewImageLink}
         notation={pgn}
         id={_id}
+        isCustom={isCustom}
+        owner={owner}
       />
       {isFavourite && <IconButton className={classes.favButton} onClick={handleUnfavourite} size='small' color='primary'>
         <StarIcon fontSize='large' />

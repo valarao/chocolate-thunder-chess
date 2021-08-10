@@ -20,7 +20,7 @@ export const NAVBAR_ROUTES = [
   },
   {
     link: '/custom',
-    display: 'Custom Notations',
+    display: 'Custom Openings',
     component: CreateIcon,
   },
 ];
