@@ -8,7 +8,6 @@ const initialState = {};
 const rootReducer = combineReducers({
   positions: positionReducer,
   favourites: favouriteReducer,
-  // TODO: Add new states reducers here
   users: userReducer,
 });
 

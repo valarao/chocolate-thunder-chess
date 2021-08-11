@@ -4,7 +4,6 @@ import makeStyles from '@material-ui/core/styles/makeStyles';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 
-import SearchBar from '../components/dashboard/SearchBar';
 import PositionCardContainer from '../components/dashboard/PositionCardContainer';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFavouritePositions } from '../redux/actions/favouriteActions';
@@ -37,11 +36,10 @@ const FavouriteNotationPage = () => {
       <Typography className={classes.text} variant='h3'>FAVOURITE NOTATIONS</Typography>
       {!isSignedIn && <Box>
         <Typography className={classes.text}>
-          Please sign in to access your custom openings.
+          Please sign in to access your favourite openings.
         </Typography>
       </Box>}
       {isSignedIn && <Box>
-        <SearchBar />
         {currentFavourites && <PositionCardContainer
         positions={currentFavourites}
       />}

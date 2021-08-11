@@ -35,8 +35,6 @@ const DashboardPage = () => {
     dispatch(getFavouritePositions(user.id));
   }
 
-  console.log(currentFavourites);
-
   return (
     <Box className={classes.root}>
       <SearchBar />

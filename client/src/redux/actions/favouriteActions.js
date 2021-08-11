@@ -11,17 +11,6 @@ export const getFavouritePositions = (ownerId) => async(dispatch) => {
     }
 }
 
-export const getSearchedFavourites = (ownerId, searchFilter) => async (dispatch) => {
-  try {
-    searchFilter = searchFilter.trim().replace(' ', '+');
-    const serverResponse = await axios.get(`api/favourites/search/${ownerId}?filter=${searchFilter}`);
-    const { positions } = serverResponse.data;
-    return dispatch({ type: GET_FAVOURITE_POSITIONS, payload: positions });
-  } catch (error) {
-    console.log(error);
-  }
-}
-
 export const addFavouritePosition = (id, ownerId) => async(dispatch) => {
     try {
       await axios.patch(`api/favourites/add/${ownerId}/${id}`);
