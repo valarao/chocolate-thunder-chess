@@ -33,7 +33,6 @@ const FavouriteNotationPage = () => {
 
   return (
     <Box className={classes.root}>
-      <Typography className={classes.text} variant='h3'>FAVOURITE NOTATIONS</Typography>
       {!isSignedIn && <Box>
         <Typography className={classes.text}>
           Please sign in to access your favourite openings.
