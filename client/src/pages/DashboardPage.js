@@ -26,13 +26,16 @@ const DashboardPage = () => {
   const dispatch = useDispatch();
   const currentPositions = useSelector(state => state.positions.currentPositions);
   const currentFavourites = useSelector(state => state.favourites.currentFavourites);
+  const user = useSelector(state => state.users.user);
 
   if (currentPositions === null) {
     dispatch(getCommonPositions());
   }
-  if (currentFavourites === null) {
-    dispatch(getFavouritePositions());
+  if (currentFavourites === null && user !== null) {
+    dispatch(getFavouritePositions(user.id));
   }
+
+  console.log(currentFavourites);
 
   return (
     <Box className={classes.root}>

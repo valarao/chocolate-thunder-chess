@@ -24,18 +24,28 @@ const FavouriteNotationPage = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const currentFavourites = useSelector(state => state.favourites.currentFavourites);
+  const user = useSelector(state => state.users.user);
+  const isSignedIn = user !== null;
 
-  if (currentFavourites === null) {
-    dispatch(getFavouritePositions());
+  if (currentFavourites === null && user !== null) {
+    console.log(user.id);
+    dispatch(getFavouritePositions(user.id));
   }
 
   return (
     <Box className={classes.root}>
       <Typography className={classes.text} variant='h3'>FAVOURITE NOTATIONS</Typography>
-      <SearchBar />
-      {currentFavourites && <PositionCardContainer
+      {!isSignedIn && <Box>
+        <Typography className={classes.text}>
+          Please sign in to access your custom openings.
+        </Typography>
+      </Box>}
+      {isSignedIn && <Box>
+        <SearchBar />
+        {currentFavourites && <PositionCardContainer
         positions={currentFavourites}
       />}
+      </Box>}
     </Box>
   );
 };

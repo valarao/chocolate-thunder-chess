@@ -28,10 +28,4 @@ const positionSchema = new Schema({
   },
 });
 
-const positions = mongoose.model('Position', positionSchema, 'positions');
-const favourites = mongoose.model('Favourite', positionSchema, 'favourites');
-
-module.exports = {
-  dashboardPositions: positions,
-  favouritePositions: favourites,
-};
+module.exports = mongoose.model('Position', positionSchema, 'positions');

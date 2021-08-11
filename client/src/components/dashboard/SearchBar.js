@@ -6,7 +6,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import TextField from '@material-ui/core/TextField';
 import IconButton from '@material-ui/core/IconButton';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getSearchedPositions } from '../../redux/actions/positionActions';
 import { useLocation } from 'react-router-dom';
 import { getSearchedFavourites } from '../../redux/actions/favouriteActions';
@@ -46,6 +46,7 @@ const SearchBar = () => {
   const classes = useStyles();
   const location = useLocation();
   const dispatch = useDispatch();
+  const user = useSelector(state => state.users.user);
 
   const onKeyDown = (e) =>  {
     switch(e.key) {
@@ -64,7 +65,7 @@ const SearchBar = () => {
           dispatch(getSearchedPositions(searchFilter.current.value));
           break;
         case '/favourites':
-          dispatch(getSearchedFavourites(searchFilter.current.value));
+          dispatch(getSearchedFavourites(user.id, searchFilter.current.value));
           break;
         default:
           return;

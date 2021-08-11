@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
   image: {
     width: '85%',
     borderRadius: '0.25rem',
-    marginTop: '0.25rem',
+    marginTop: '0.75rem',
   },
   title: {
     fontSize: '20px',
@@ -39,7 +39,6 @@ const useStyles = makeStyles(theme => ({
   favButton: {
     float: 'right',
     marginRight: '0.6rem',
-    marginTop: '0.25rem',
     left: theme.spacing(1),
   }
 }));
@@ -48,6 +47,8 @@ const PositionCard = (props) => {
   const classes = useStyles();
   const { position, isCustom } = props;
   const { baseOpening, previewImageLink , pgn, _id, owner } = position;
+  const user = useSelector(state => state.users.user);
+  const isSignedIn = user !== null;
 
   let name = '';
   if (isCustom) {
@@ -61,10 +62,10 @@ const PositionCard = (props) => {
   const dispatch = useDispatch();
 
   const handleFavourite = () => {
-    dispatch(addFavouritePosition(position));
+    dispatch(addFavouritePosition(_id, user.id));
   }
   const handleUnfavourite = () => {
-    dispatch(deleteFavouritePosition(position._id));
+    dispatch(deleteFavouritePosition(_id, user.id));
   }
 
   const handleClickOpen = () => {
@@ -74,7 +75,6 @@ const PositionCard = (props) => {
     setOpen(false);
   }
 
-<<<<<<< HEAD
   useEffect(() => {
     if (currentFavourites !== null && currentFavourites.find(pos => pos._id === _id)) {
       setIsFavourite(true);
@@ -85,11 +85,9 @@ const PositionCard = (props) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentFavourites])
   
-=======
   const handlePlay = async () => {
     window.open(GAMEPLAY_URL)
   }
->>>>>>> main
 
   return (
     <Paper className={classes.root}>
@@ -104,10 +102,12 @@ const PositionCard = (props) => {
         isCustom={isCustom}
         owner={owner}
       />
-      {isFavourite && <IconButton className={classes.favButton} onClick={handleUnfavourite} size='small' color='primary'>
+      {isSignedIn && isFavourite && !isCustom &&
+       <IconButton className={classes.favButton} onClick={handleUnfavourite} size='small' color='primary'>
         <StarIcon fontSize='large' />
       </IconButton> }
-      {!isFavourite && <IconButton className={classes.favButton} onClick={handleFavourite} size='small' color='primary'>
+      {isSignedIn && !isFavourite && !isCustom &&
+      <IconButton className={classes.favButton} onClick={handleFavourite} size='small' color='primary'>
         <StarOutlineIcon fontSize='large' />
       </IconButton> }
       <Box onClick={handleClickOpen}>
