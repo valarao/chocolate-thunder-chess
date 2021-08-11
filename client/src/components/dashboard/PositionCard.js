@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import Paper from '@material-ui/core/Paper';
@@ -8,6 +8,11 @@ import Box from '@material-ui/core/Box';
 import { GAMEPLAY_URL } from '../../util/gameplay.js';
 
 import NotationDisplay from './NotationDisplay';
+import IconButton from '@material-ui/core/IconButton';
+import StarIcon from '@material-ui/icons/Star';
+import StarOutlineIcon from '@material-ui/icons/StarOutline';
+import { useDispatch, useSelector } from 'react-redux';
+import { addFavouritePosition, deleteFavouritePosition } from '../../redux/actions/favouriteActions';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -18,7 +23,7 @@ const useStyles = makeStyles(theme => ({
   image: {
     width: '85%',
     borderRadius: '0.25rem',
-    marginTop: '1rem',
+    marginTop: '0.75rem',
   },
   title: {
     fontSize: '20px',
@@ -31,12 +36,19 @@ const useStyles = makeStyles(theme => ({
       fontSize: '16px',
     },
   },
+  favButton: {
+    float: 'right',
+    marginRight: '0.6rem',
+    left: theme.spacing(1),
+  }
 }));
 
 const PositionCard = (props) => {
   const classes = useStyles();
   const { position, isCustom } = props;
   const { baseOpening, previewImageLink , pgn, _id, owner } = position;
+  const user = useSelector(state => state.users.user);
+  const isSignedIn = user !== null;
 
   let name = '';
   if (isCustom) {
@@ -45,15 +57,34 @@ const PositionCard = (props) => {
     name = baseOpening.name;
   }
   const [open, setOpen] = useState(false);
+  const [isFavourite, setIsFavourite] = useState(false);
+  const currentFavourites = useSelector(state => state.favourites.currentFavourites);
+  const dispatch = useDispatch();
+
+  const handleFavourite = () => {
+    dispatch(addFavouritePosition(_id, user.id));
+  }
+  const handleUnfavourite = () => {
+    dispatch(deleteFavouritePosition(_id, user.id));
+  }
 
   const handleClickOpen = () => {
     setOpen(true);
   }
-
   const handleClose = () => {
     setOpen(false);
   }
 
+  useEffect(() => {
+    if (currentFavourites !== null && currentFavourites.find(pos => pos._id === _id)) {
+      setIsFavourite(true);
+    }
+    else {
+      setIsFavourite(false);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentFavourites])
+  
   const handlePlay = async () => {
     window.open(GAMEPLAY_URL)
   }
@@ -71,6 +102,14 @@ const PositionCard = (props) => {
         isCustom={isCustom}
         owner={owner}
       />
+      {isSignedIn && isFavourite && !isCustom &&
+       <IconButton className={classes.favButton} onClick={handleUnfavourite} size='small' color='primary'>
+        <StarIcon fontSize='large' />
+      </IconButton> }
+      {isSignedIn && !isFavourite && !isCustom &&
+      <IconButton className={classes.favButton} onClick={handleFavourite} size='small' color='primary'>
+        <StarOutlineIcon fontSize='large' />
+      </IconButton> }
       <Box onClick={handleClickOpen}>
         <img className={classes.image} src={previewImageLink} alt={name} />
         <Typography className={classes.title}>

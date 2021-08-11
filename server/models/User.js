@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Position = require('./Position');
 
 const { Schema } = mongoose;
 
@@ -19,6 +20,7 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  favourites: [{ type: mongoose.Schema.Types.ObjectId, ref: Position }],
 });
 
 module.exports = mongoose.model('User', userSchema, 'users');
