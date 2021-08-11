@@ -9,8 +9,6 @@ import Box from '@material-ui/core/Box';
 import Navbar from './components/navigation/Navbar';
 import DashboardPage from './pages/DashboardPage';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
-import AboutPage from './pages/AboutPage';
-import NotationInfoPage from './pages/NotationInfoPage';
 import FavouriteNotationPage from './pages/FavouritePage';
 import CustomNotationPage from './pages/CustomNotationPage';
 import Footer from './components/footer/Footer';
@@ -36,9 +34,7 @@ const App = () => {
               <Navbar location={history.location.pathname} />
             )} />
             <Switch>
-              <Route exact path="/about" component={AboutPage} />
               <Route exact path="/game" component={GamePage} />
-              <Route exact path="/info" component={NotationInfoPage} />
               <Route exact path="/favourites" component={FavouriteNotationPage} />
               <Route exact path="/custom" component={CustomNotationPage} />
               <Route exact path="/" component={DashboardPage} />
