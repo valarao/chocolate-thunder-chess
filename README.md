@@ -6,55 +6,68 @@ For <b>intermediate and advanced Chess players</b>, a large part of improving in
 
 Currently, practicing specific niche openings is a hassle; (1) your opponent often has to make a specific set of moves to begin with to "enter" the opening you want to practice and (2) solo analysis requires careful progammatic-like inputting of [chess notation](https://en.wikipedia.org/wiki/Algebraic_notation_(chess))). 
 
-Our project would primarily <b>allow players to retrieve common opening positions</b> for players to practice, as the application's database would store <b>100+ notation sets of the most common opening positions</b>.
-
-By retrieving these opening positions, players can <b>input the notation into other Chess websites for analysis</b>, or even potentially play games (against themselves or an [AI engine](https://en.wikipedia.org/wiki/Stockfish_(chess))) starting at the positions requested. 
+Our project would primarily <b>allow players to retrieve common opening positions</b> for players to practice, as the application's database would store <b>100+ notation sets of the most common opening positions</b> and players can then retrieve the notations they want to <b>input the notation into other Chess websites for analysis</b>
 
 ## Project Task Requirements
 
 ### Minimal Requirements
 
-1. As a user, I should be able to <b>retrieve starting position notations</b> from common openings that I will be able to plug into another chess applications (Lichess, Chess.com, etc.) to setup a board
-2. As a user, I should be able to retrieve one of the more common opening positions by <b>clicking on a position card</b> from the starting page 
-3. As a user, I should be able to retrieve the notation for a specific starting position I want using a <b>search bar</b>
+✔ 1. As a user, I should be able to <b>retrieve starting position notations</b> from common openings that I will be able to plug into another chess applications (Lichess, Chess.com, etc.) to setup a board <br>
+✔ 2. As a user, I should be able to retrieve one of the more common opening positions by <b>clicking on a position card</b> from the starting page <br>
+✔ 3. As a user, I should be able to retrieve the notation for a specific starting position I want using a <b>search bar</b> <br>
 
 ### Standard Requirements
 
-1. As a user, I should be able to <b>create and refer back</b> to my own custom openings that I've created.
-2. As a user, I should be able to <b>favourite openings</b> and be able to refer to them at a later point.
-3. As a user, I should be able to <b>randomly retrieve the notation for a specific position</b> by clicking on a button ("Give me a position")
-4. As a user, I should be able to <b>quickly redirect myself</b> to another chess application.
+✔ 1. As a user, I should be able to <b>create and refer back</b> to my own custom openings that I've created. <br>
+✔ 2. As a user, I should be able to <b>favourite openings</b> and be able to refer to them at a later point. <br>
+✔ 4. As a user, I should be able to <b>quickly redirect myself</b> to another chess application. <br>
 
 ### Stretch Requirements
 
-1. As a user, I should be able to <b>make my own account</b> with a history of the past games I've played
-2. As a user, I should be able to <b>play games against my friends</b>
-3. As a user, I should be able to <b>play games by setting my own custom positions</b>
+✔ 1. As a user, I should be able to <b>make my own account</b> with a history of the past games I've played <br>
+❌ 2. As a user, I should be able to <b>play games against my friends</b> <br>
+✔ 3. As a user, I should be able to <b>play games by setting my own custom positions</b> <br>
 
-## Task Breakdown
+### Technology
 
-### Task 1: Allow Retrieval of Starting Position Notations (Backend)
+<b>Unit 1 - HTML/CSS/Javascript</b><br>
+We used HTML coupled with React to create some of our preliminary components in our front end app. CSS was also combined with React to stylize our web application and establish the colour theme as well. By using CSS and MaterialUI library, we ensured we had responsive web design. Javascript was also used in the development of our node backend
 
-1. Design a <b>data structure</b> for storing position notations
-2. Populate database with 100 sets of position notations (either manually or with a script)
-3. Create an endpoint to retrieve a starting position
+<b>Unit 2 - React</b><br>
+The frontend was created using the React library and separated into many reusable components. MaterialUI was also used here to aid in creating components and integrating CSS to further shape elements in our web app. Every element seen on screen is a component created in React. Examples would include chess notation represented by a card component and can be clicked on for a pop up component to view additional information. Other pages accessible via the navigation bar were a separate component as well.
 
-### Task 2: Create Most "Common Position" Cards to Click  (Frontend)
+<b>Unit 3 - Node and Express</b><br>
+The backend server was created using Express and Nodejs. Several endpoints were written to make API calls to get information of chess notations from the database and to implement user authentication, and users can also query a search filter to find a specific notation. Favourite chess notations and custom notations were also able to be added and deleted using the server endpoints in conjunction with MongoDB
 
-1. Implement a position card component (includes styling)
-2. Populate the position cards with 10 common positions
-3. Connect the card with the endpoint to retrieve a starting position
+<b>Unit 4 - NoSQL with MongoDB</b><br>
+Chess opening notation data was scraped from the web and stored in a collection in MongoDB where our app was able to access that data to get and store additional notations. User metadata from authentication is also stored in MongoDB in a separate collection and each user has an array referencing the notation collection to store user favourites. Custom notations are another collection being stored, and references the user id that owns that custom notation.
 
-## Prototypes
+<b>Unit 5 - Release Engineering</b><br>
+Our app is deployed on Heroku with additional CI/CD testing added through Github actions. Heroku is setup so that a branch build deployment is automatically launched when a new PR is created on Github, and a staging app is deployed when the main branch is updated.
 
-### Prototype 1: Most Common Position Cards
+### ‘Above and Beyond’ functionality
+- For an extended UI/UX design functionality, we have global theme provider so that we are able to change the styling and coloring of our web app easily rather than having to change each individual colour within our CSS code.
+- Another piece that went above and beyond our stated requirements was how we generate customized images for the different sets of notations by building a backend script that consumed pgn and color customization parameters and spit out pngs derived from these notations
+- Images for each chess opening are stored in an AWS S3 photo bucket to optimize loading times when opening data is retrieved from the backend - rather than sending an image buffer, the backend sends a link to the photo bucket which drastically reduces load.
+- In terms of infrastructure, we also set up Heroku deployments for branch builds and pull requests such that code reviews would be streamlined and would have actual working examples to reference
 
-![Protoype 1](./docs/mockups/MainMostCommonPositions.png)
+### Next Steps
+For our next steps, we would like to create our own gameplay area within our app where users are able to start a chess match with their selected opening position and play against a computer or another user, or play in a sandbox by themselves. In line with this, we would also want to save notations or board positions of where a user/player may have dropped off and would like to pick up from if they were playing in our environment. In addition, we would also like to implement a page or popup with more detailed information on the most common notations explaining its uses in chess and the pros and cons of using the opening. This could also be extended to a current notation of interest that may have been selected for analysis
 
-### Prototype 2: Output Upon Notation Card Click
+### List of contributions
+<b>Joy: Notation Card + Favorites</b>
 
-![Protoype 2](./docs/mockups/PlayChess.png)
+Joy worked on the frontend by building the detailed opening notation popup, allowing users to look at an opening more closely and be able to copy the PGN notation of that opening position. Joy also worked on the backend in implementing the favourites feature, creating the favourites API endpoint and referencing the position data in the individual user to store their favourited opening positions. Other contributions were the initial prototyping of the frontend design and the creation of the logo.
 
-### Prototype 3: Output Upon Notation Search
+<b>Alvin: Auth + GitHub Actions</b>
 
-![Protoype 3](./docs/mockups/SearchExample.png)
+Alvin worked primarily across both front and back end building react components such as the footer and contributed to state management using Redux as well as UI development for the three main pages in our app. Other notable contributions were integrating social login for user authentication via Facebook and Google and persisting metadata into our MongoDB database for new and returning users. Alvin also contributed to infrastructure set up with Github actions regarding CI/CD for branch builds and pull requests
+
+<b>Austin: DB + Custom Positions</b>
+
+Austin worked both the backend and frontend of the application. Austin's main contribution includes cleansing and populating the web-scraped data into the MongoDB databases, generating and uploading images to the AWS S3 bucket and creating the REST API endpoints used in the Train and Custom Openings pages, and lastly working on the front end components used in the Custom Openings page. 
+
+<b>Miguel: Data Scraping and Theming Dark Mode</b>
+
+Although Miguel contributed across various pieces of the application, Miguel’s main contributions were performing the data scraping to retrieve chess notations and handling Heroku deployment. Miguel also handled setting up the color theming for the application to be easily changeable.
+
