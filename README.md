@@ -31,27 +31,28 @@ Our project would primarily <b>allow players to retrieve common opening position
 ### Technology
 
 <b>Unit 1 - HTML/CSS/Javascript</b><br>
-We used HTML coupled with React to create some of our preliminary components in our front end app. CSS was also combined with React to stylize our web application and establish the colour theme as well. By using CSS and MaterialUI library, we ensured we had responsive web design.
+We used HTML coupled with React to create some of our preliminary components in our front end app. CSS was also combined with React to stylize our web application and establish the colour theme as well. By using CSS and MaterialUI library, we ensured we had responsive web design. Javascript was also used in the development of our node backend
 
 <b>Unit 2 - React</b><br>
-The frontend was created using the React library and separated into several components. MaterialUI was also used to aid in creating components and integrating CSS to further shape elements in our web app. Each chess notation is represented as a card component and can be clicked on for a pop up to view additional information, and other pages accessed by a navigation bar were a separate component as well.
+The frontend was created using the React library and separated into many reusable components. MaterialUI was also used here to aid in creating components and integrating CSS to further shape elements in our web app. Every element seen on screen is a component created in React. Examples would include chess notation represented by a card component and can be clicked on for a pop up component to view additional information. Other pages accessible via the navigation bar were a separate component as well.
 
 <b>Unit 3 - Node and Express</b><br>
-The backend server was created using Express. Several endpoints were written to make API calls to get information of chess notations from the database and to implement user authentication, and users can also query a search filter to find a specific notation. Favourite chess notations and custom notations were also able to be added and deleted using the server endpoints.
+The backend server was created using Express and Nodejs. Several endpoints were written to make API calls to get information of chess notations from the database and to implement user authentication, and users can also query a search filter to find a specific notation. Favourite chess notations and custom notations were also able to be added and deleted using the server endpoints in conjunction with MongoDB
 
 <b>Unit 4 - NoSQL with MongoDB</b><br>
-Chess opening notation data was scraped from the web and stored in a collection in MongoDB where our app was able to access that data to get and store additional notations. User information is also stored in MongoDB in a separate collection and each user has an array referencing the notation collection to store user favourites. Custom notations are another collection being stored, and references the user id that owns that custom notation.
+Chess opening notation data was scraped from the web and stored in a collection in MongoDB where our app was able to access that data to get and store additional notations. User metadata from authentication is also stored in MongoDB in a separate collection and each user has an array referencing the notation collection to store user favourites. Custom notations are another collection being stored, and references the user id that owns that custom notation.
 
 <b>Unit 5 - Release Engineering</b><br>
-Our app is deployed on Heroku with additional CI/CD testing added through Github actions. Heroku is setup so that a review deployment is automatically launched when a new PR is created on Github, and a staging app is deployed when the main branch is updated.
+Our app is deployed on Heroku with additional CI/CD testing added through Github actions. Heroku is setup so that a branch build deployment is automatically launched when a new PR is created on Github, and a staging app is deployed when the main branch is updated.
 
 ### ‘Above and Beyond’ functionality
-- For an extended UI/UX design functionality, we have global theme variables so that we are able to change the colours of our web app easily rather than having to change each individual colour within our CSS code.
-- Another piece that went above and beyond our stated requirements was how we generate customized images for the different sets of notations by building a script that consumed pgn and spit out pngs derived from these notations
+- For an extended UI/UX design functionality, we have global theme provider so that we are able to change the styling and coloring of our web app easily rather than having to change each individual colour within our CSS code.
+- Another piece that went above and beyond our stated requirements was how we generate customized images for the different sets of notations by building a backend script that consumed pgn and spit out pngs derived from these notations
 - Images for each chess opening are stored in an AWS S3 photo bucket to optimize loading times when opening data is retrieved from the backend - rather than sending an image buffer, the backend sends a link to the photo bucket which drastically reduces load.
+- In terms of infrastructure, we also set up Heroku deployments for branch builds and pull requests such that code reviews would be streamlined and would have actual working examples to reference
 
 ### Next Steps
-For our next steps, we would like to create our own gameplay area where users are able to start a chess match with their selected opening position and verse against a computer or another user, or play in a sandbox by themselves. In addition, we would also like to implement a page or popup with more detailed information on the most common notations explaining its uses in chess and the pros and cons of using the opening.
+For our next steps, we would like to create our own gameplay area within our app where users are able to start a chess match with their selected opening position and play against a computer or another user, or play in a sandbox by themselves. In line with this, we would also want to save notations or board positions of where a user/player may have dropped off and would like to pick up from if they were playing in our environment. In addition, we would also like to implement a page or popup with more detailed information on the most common notations explaining its uses in chess and the pros and cons of using the opening. This could also be extended to a current notation of interest that may have been selected for analysis
 
 ### List of contributions
 <b>Joy: Notation Card + Favorites</b>
