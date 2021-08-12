@@ -47,7 +47,7 @@ Our app is deployed on Heroku with additional CI/CD testing added through Github
 
 ### ‘Above and Beyond’ functionality
 - For an extended UI/UX design functionality, we have global theme provider so that we are able to change the styling and coloring of our web app easily rather than having to change each individual colour within our CSS code.
-- Another piece that went above and beyond our stated requirements was how we generate customized images for the different sets of notations by building a backend script that consumed pgn and spit out pngs derived from these notations
+- Another piece that went above and beyond our stated requirements was how we generate customized images for the different sets of notations by building a backend script that consumed pgn and color customization parameters and spit out pngs derived from these notations
 - Images for each chess opening are stored in an AWS S3 photo bucket to optimize loading times when opening data is retrieved from the backend - rather than sending an image buffer, the backend sends a link to the photo bucket which drastically reduces load.
 - In terms of infrastructure, we also set up Heroku deployments for branch builds and pull requests such that code reviews would be streamlined and would have actual working examples to reference
 
