@@ -13,7 +13,6 @@ import FavouriteNotationPage from './pages/FavouritePage';
 import CustomNotationPage from './pages/CustomNotationPage';
 import Footer from './components/footer/Footer';
 import theme from './util/theme';
-import GamePage from './pages/GamePage';
 import LoginPage from './pages/LoginPage';
 
 const useStyles = makeStyles({
@@ -34,7 +33,6 @@ const App = () => {
               <Navbar location={history.location.pathname} />
             )} />
             <Switch>
-              <Route exact path="/game" component={GamePage} />
               <Route exact path="/favourites" component={FavouriteNotationPage} />
               <Route exact path="/custom" component={CustomNotationPage} />
               <Route exact path="/" component={DashboardPage} />

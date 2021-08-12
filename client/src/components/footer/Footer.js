@@ -22,7 +22,7 @@ const Footer = (props) => {
   const { location } = props;
 
   return (
-    <BottomNavigation className={location !== '/game' ? classes.root : classes.hidden}>
+    <BottomNavigation className={location === '/' ? classes.root : classes.hidden}>
       <Box>
         <Typography align="center" variant="overline" display="block">
           © 2021 Chocolate Thunder
