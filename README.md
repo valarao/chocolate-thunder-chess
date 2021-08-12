@@ -24,14 +24,14 @@ Our project would primarily <b>allow players to retrieve common opening position
 
 ### Stretch Requirements
 
-❌ 1. As a user, I should be able to <b>make my own account</b> with a history of the past games I've played <br>
+✔ 1. As a user, I should be able to <b>make my own account</b> with a history of the past games I've played <br>
 ❌ 2. As a user, I should be able to <b>play games against my friends</b> <br>
-❌ 3. As a user, I should be able to <b>play games by setting my own custom positions</b> <br>
+✔ 3. As a user, I should be able to <b>play games by setting my own custom positions</b> <br>
 
 ### Technology
 
 <b>Unit 1 - HTML/CSS/Javascript</b><br>
-CSS is combined with React to stylize our web application and establish the colour theme as well. By using CSS and MaterialUI library, we ensured we had responsive web design.
+We used HTML coupled with React to create some of our preliminary components in our front end app. CSS was also combined with React to stylize our web application and establish the colour theme as well. By using CSS and MaterialUI library, we ensured we had responsive web design.
 
 <b>Unit 2 - React</b><br>
 The frontend was created using the React library and separated into several components. MaterialUI was also used to aid in creating components and integrating CSS to further shape elements in our web app. Each chess notation is represented as a card component and can be clicked on for a pop up to view additional information, and other pages accessed by a navigation bar were a separate component as well.
@@ -47,7 +47,7 @@ Our app is deployed on Heroku with additional CI/CD testing added through Github
 
 ### ‘Above and Beyond’ functionality
 - For an extended UI/UX design functionality, we have global theme variables so that we are able to change the colours of our web app easily rather than having to change each individual colour within our CSS code.
-- Another piece that went above and beyond our stated requirements was how we generate customized images for the different sets of notations
+- Another piece that went above and beyond our stated requirements was how we generate customized images for the different sets of notations by building a script that consumed pgn and spit out pngs derived from these notations
 - Images for each chess opening are stored in an AWS S3 photo bucket to optimize loading times when opening data is retrieved from the backend - rather than sending an image buffer, the backend sends a link to the photo bucket which drastically reduces load.
 
 ### Next Steps
