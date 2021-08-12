@@ -1,5 +1,4 @@
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-import InfoIcon from '@material-ui/icons/Info';
 import CreateIcon from '@material-ui/icons/Create';
 
 export const NAVBAR_ROUTES = [
@@ -9,13 +8,13 @@ export const NAVBAR_ROUTES = [
     component: PlayArrowIcon,
   },
   {
-    link: '/info',
-    display: 'Position Info',
-    component: InfoIcon,
+    link: '/favourites',
+    display: 'Favourite Notations',
+    component: CreateIcon,
   },
   {
     link: '/custom',
-    display: 'Custom Notations',
+    display: 'Custom Openings',
     component: CreateIcon,
   },
 ];

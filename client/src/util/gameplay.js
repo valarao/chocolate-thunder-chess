@@ -1,0 +1,1 @@
+export const GAMEPLAY_URL = 'https://www.chess.com/analysis';

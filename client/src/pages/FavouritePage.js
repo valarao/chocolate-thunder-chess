@@ -2,48 +2,49 @@ import React from 'react';
 
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import Box from '@material-ui/core/Box';
+import Typography from '@material-ui/core/Typography';
 
-import SearchBar from '../components/dashboard/SearchBar';
 import PositionCardContainer from '../components/dashboard/PositionCardContainer';
-
 import { useDispatch, useSelector } from 'react-redux';
-import { getCommonPositions } from '../redux/actions/positionActions';
 import { getFavouritePositions } from '../redux/actions/favouriteActions';
 
 const useStyles = makeStyles(theme => ({
   root: {
     textAlign: 'center',
-    marginTop: '2rem',
   },
   text: {
     color: theme.palette.text.primary,
     textAlign: 'center',
+    margin: '1rem 0.5rem',
   },
 }));
 
-const DashboardPage = () => {
+const FavouriteNotationPage = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const currentPositions = useSelector(state => state.positions.currentPositions);
   const currentFavourites = useSelector(state => state.favourites.currentFavourites);
   const user = useSelector(state => state.users.user);
+  const isSignedIn = user !== null;
 
-  if (currentPositions === null) {
-    dispatch(getCommonPositions());
-  }
   if (currentFavourites === null && user !== null) {
+    console.log(user.id);
     dispatch(getFavouritePositions(user.id));
   }
 
   return (
     <Box className={classes.root}>
-      <SearchBar />
-      {currentPositions && <PositionCardContainer
-        positions={currentPositions}
-        isCustom={false}
+      {!isSignedIn && <Box>
+        <Typography className={classes.text}>
+          Please sign in to access your favourite openings.
+        </Typography>
+      </Box>}
+      {isSignedIn && <Box>
+        {currentFavourites && <PositionCardContainer
+        positions={currentFavourites}
       />}
+      </Box>}
     </Box>
   );
 };
 
-export default DashboardPage;
+export default FavouriteNotationPage;
