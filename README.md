@@ -55,6 +55,7 @@ For our next steps, we would like to create our own gameplay area where users ar
 
 ### List of contributions
 <b>Joy: Notation Card + Favorites</b>
+
 Joy worked on the frontend by building the detailed opening notation popup, allowing users to look at an opening more closely and be able to copy the PGN notation of that opening position. Joy also worked on the backend in implementing the favourites feature, creating the favourites API endpoint and referencing the position data in the individual user to store their favourited opening positions. Other contributions were the initial prototyping of the frontend design and the creation of the logo.
 
 <b>Alvin: Auth + GitHub Actions</b>
